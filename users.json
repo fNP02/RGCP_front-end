@@ -1,73 +1,102 @@
 [
-    {
-      "nombre": "Juan Pérez",
-      "apellido": "García",
-      "email": "juan.perez@example.com",
-      "id": 1,
-      "contraseña": "123456"
-    },
-    {
-      "nombre": "María García",
-      "apellido": "López",
-      "email": "maria.garcia@example.com",
-      "id": 2,
-      "contraseña": "654321"
-    },
-    {
-      "nombre": "Pedro López",
-      "apellido": "Martínez",
-      "email": "pedro.lopez@example.com",
-      "id": 3,
-      "contraseña": "123456789"
-    },
-    {
-      "nombre": "Ana Martínez",
-      "apellido": "González",
-      "email": "ana.martinez@example.com",
-      "id": 4,
-      "contraseña": "1234567890"
-    },
-    {
-      "nombre": "Carlos González",
-      "apellido": "Pérez",
-      "email": "carlos.gonzalez@example.com",
-      "id": 5,
-      "contraseña": "123456789012345"
-    },
-    {
-      "nombre": "Luis Pérez",
-      "apellido": "García",
-      "email": "luis.perez@example.com",
-      "id": 6,
-      "contraseña": "1234567890123456789"
-    },
-    {
-      "nombre": "Daniel García",
-      "apellido": "López",
-      "email": "daniel.garcia@example.com",
-      "id": 7,
-      "contraseña": "12345678901234567890"
-    },
-    {
-      "nombre": "Elena López",
-      "apellido": "Martínez",
-      "email": "elena.lopez@example.com",
-      "id": 8,
-      "contraseña": "1234567890123456789012345"
-    },
-    {
-      "nombre": "Francisco Martínez",
-      "apellido": "González",
-      "email": "francisco.martinez@example.com",
-      "id": 9,
-      "contraseña": "12345678901234567890123456789"
-    },
-    {
-      "nombre": "José González",
-      "apellido": "Pérez",
-      "email": "jose.gonzalez@example.com",
-      "id": 10,
-      "contraseña": "123456789012345678901234567890"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "email": "juan.perez@example.com",
+    "name": "Juan",
+    "last_name": "Pérez",
+    "phone": "1234567890",
+    "rol": "Estudiante",
+    "institution_name": "Universidad de Buenos Aires",
+    "job": "Ingeniería Informática"
+  },
+  {
+    "id": 2,
+    "email": "maria.garcia@example.com",
+    "name": "María",
+    "last_name": "García",
+    "phone": "9876543210",
+    "rol": "Profesora",
+    "institution_name": "Universidad Nacional de La Plata",
+    "job": "Ingeniería en Sistemas"
+  },
+  {
+    "id": 3,
+    "email": "pedro.lopez@example.com",
+    "name": "Pedro",
+    "last_name": "López",
+    "phone": "15678901234",
+    "rol": "Empleado",
+    "institution_name": "Google",
+    "job": "Ingeniero de Software"
+  },
+  {
+    "id": 4,
+    "email": "ana.martinez@example.com",
+    "name": "Ana",
+    "last_name": "Martínez",
+    "phone": "11223344556",
+    "rol": "Empresaria",
+    "institution_name": "Su propia empresa",
+    "job": "CEO"
+  },
+  {
+    "id": 5,
+    "email": "carlos.gonzalez@example.com",
+    "name": "Carlos",
+    "last_name": "González",
+    "phone": "11223344557",
+    "rol": "Artista",
+    "institution_name": "Sin institución",
+    "job": "Pintor"
+  },
+  {
+    "id": 6,
+    "email": "luis.perez@example.com",
+    "name": "Luis",
+    "last_name": "Pérez",
+    "phone": "11223344558",
+    "rol": "Estudiante",
+    "institution_name": "Universidad de Córdoba",
+    "job": "Ingeniería Civil"
+  },
+  {
+    "id": 7,
+    "email": "daniel.garcia@example.com",
+    "name": "Daniel",
+    "last_name": "García",
+    "phone": "11223344559",
+    "rol": "Profesor",
+    "institution_name": "Universidad de Rosario",
+    "job": "Ingeniería Química"
+  },
+  {
+    "id": 8,
+    "email": "elena.lopez@example.com",
+    "name": "Elena",
+    "last_name": "López",
+    "phone": "11223344560",
+    "rol": "Empleada",
+    "institution_name": "IBM",
+    "job": "Analista de Sistemas"
+  },
+  {
+    "id": 9,
+    "email": "francisco.martinez@example.com",
+    "name": "Francisco",
+    "last_name": "Martínez",
+    "phone": "11223344561",
+    "rol": "Empresario",
+    "institution_name": "Su propia empresa",
+    "job": "Director General"
+  },
+  {
+    "id": 10,
+    "email": "jose.gonzalez@example.com",
+    "name": "José",
+    "last_name": "González",
+    "phone": "11223344562",
+    "rol": "Artista",
+    "institution_name": "Sin institución",
+    "job": "Escultor"
+  }
+]

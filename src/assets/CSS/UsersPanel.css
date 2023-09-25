@@ -1,5 +1,135 @@
+/* UsersAdmin.css */
 
-body, h1, h2, h3, p, ul, li {
+/* Estilo para el contenedor principal */
+.users-admin {
+  font-family: 'Arial', sans-serif;
+  margin: auto;
+  text-align: center;
+  width: 80%;
+}
+
+/* Estilo para el título */
+.users-admin__title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilo para el botón "Get Users" */
+.users-admin__button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.users-admin__button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para la barra de búsqueda */
+.users-admin__search {
+  margin-bottom: 20px;
+}
+
+/* Estilo para la tabla de usuarios */
+.users-admin__table-container {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.users-admin__table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.users-admin__table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-admin__table th,
+.users-admin__table td {
+  padding: 12px;
+  text-align: left;
+}
+
+/* Estilo para las acciones en la tabla */
+.users-admin__table-actions button {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.users-admin__table-actions button:hover {
+  background-color: #1e7e34;
+}
+
+/* Estilo para el botón de eliminar */
+.users-admin__table-delete-button {
+  background-color: #dc3545;
+}
+
+.users-admin__table-delete-button:hover {
+  background-color: #c82333;
+}
+
+/* Estilo para la confirmación de eliminación */
+.users-admin__table-delete-confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.users-admin__table-delete-confirmation span {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #dc3545;
+  font-size: 16px;
+}
+
+.users-admin__table-delete-confirmation-yes-button {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.users-admin__table-delete-confirmation-yes-button:hover {
+  background-color: #c82333;
+}
+
+.users-admin__table-delete-confirmation-no-button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.users-admin__table-delete-confirmation-no-button:hover {
+  background-color: #0056b3;
+}
+
+
+/* body, h1, h2, h3, p, ul, li {
     margin: 0;
     padding: 0;
   }
@@ -36,7 +166,7 @@ body, h1, h2, h3, p, ul, li {
     transition: background-color 0.3s ease, transform 0.3s ease;
     list-style: none;
   }
-
+ */
 
 
 
@@ -44,7 +174,7 @@ body, h1, h2, h3, p, ul, li {
 
 
   
-  /* .botones:hover {
+   /* .botones:hover {
     display: inline-block;
     padding: 10px 20px;
     background-color: #66ff00 ;
@@ -56,7 +186,6 @@ body, h1, h2, h3, p, ul, li {
 
   
 
-  /*
   
   
   .container {
@@ -109,9 +238,9 @@ body, h1, h2, h3, p, ul, li {
   }
   
   
- /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
    
   }
 
-  *\
   
+   */

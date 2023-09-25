@@ -1,5 +1,5 @@
 import React from "react";
-import "../CSS/UsersPanel.css";
+// import "../CSS/UsersPanel.css";
 
 
 export const AdminHeader = () => {

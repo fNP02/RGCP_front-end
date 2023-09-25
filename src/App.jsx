@@ -7,6 +7,9 @@ import { UsersAdmin } from "./assets/components/UsersAdmin";
 import { BusinessesAdmin } from "./assets/components/BusinessesAdmin";
 import { ProtectedRoute } from "./assets/components/ProtectedRoute";
 
+import './App.css'
+
+
 export const App = () => {
   const [user, setuser] = useState(null);
 
