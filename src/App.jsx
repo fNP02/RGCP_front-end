@@ -15,7 +15,7 @@ export const App = () => {
     setuser({
       id: 1,
       name: "John",
-      permissions: ["admi"],
+      permissions: ["admin"],
       roles:['admin']
     });
   };
