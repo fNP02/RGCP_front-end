@@ -3,25 +3,25 @@ import { useState, useEffect } from "react";
 
 export const SearchComponent = ({ array, location, setResExt }) => {
   const [results, setResults] = useState([]);
-  const [term, setTerm] = useState()
+  const [term, setTerm] = useState();
 
   function normalize(str) {
     return str
-    .toLowerCase()
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u00C0-\u00D6]/g, "a")
-    .replace(/[\u00D8-\u00DE]/g, "e")
-    .replace(/[\u00E0-\u00E6]/g, "i")
-    .replace(/[\u00E8-\u00EE]/g, "o")
-    .replace(/[\u00F0-\u00F6]/g, "u");
+      ?.toLowerCase()
+      .trim()
+      .normalize("NFD")
+      .replace(/[\u00C0-\u00D6]/g, "a")
+      .replace(/[\u00D8-\u00DE]/g, "e")
+      .replace(/[\u00E0-\u00E6]/g, "i")
+      .replace(/[\u00E8-\u00EE]/g, "o")
+      .replace(/[\u00F0-\u00F6]/g, "u")
+      .replace(/[\u0300-\u036f]/g, "") // Elimina diacríticos (tildes)
+      .replace(/[^a-zA-Z0-9]/g, "")// Elimina caracteres no alfanuméricos
   }
 
   useEffect(() => {
     setResults(
-      array?.filter((user) =>
-        normalize(user.name).includes(normalize(term))
-      )
+      array?.filter((user) => normalize(user.name).includes(normalize(term)) || normalize(user.last_name).includes(normalize(term)))
     );
   }, [term]);
 
@@ -29,7 +29,7 @@ export const SearchComponent = ({ array, location, setResExt }) => {
     setResExt(results);
   }, [results]);
 
-// const getResults = () => results;
+  // const getResults = () => results;
   return (
     <>
       <input
@@ -46,5 +46,4 @@ export const SearchComponent = ({ array, location, setResExt }) => {
       )} */}
     </>
   );
-
 };

@@ -1,6 +1,78 @@
 /* UsersAdmin.css */
 
-/* Estilo para el contenedor principal */
+.usersAdmin-body {
+  width: 1200px;
+  margin: 0 auto;
+
+  & button{
+    border: 1px solid black;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding:5px;
+    margin: 0 5px;
+    min-width: 35px;
+    text-transform: uppercase;
+    font-weight: 400;}
+    .edit{
+      background-color: rgba(255  , 255, 0, 0.5);
+    }
+    .delete{background-color: rgba(255, 0, 0, 0.3);}
+    .yes{
+      background-color: rgba(255, 0, 0, 0.3);
+    }
+    .no{
+      background-color: rgba(0, 255, 0, 0.3);
+    }
+  
+
+  .usersAdmin-div-table {
+    padding: 10px;
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+
+      & th,
+      & td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ccc;
+      }
+      /* & th{
+        background-color: #f2f2f2;
+      } */
+
+      .table__head {
+        & tr {
+          text-transform: uppercase;
+          color: black;
+          border-bottom: 3px solid black;
+          /* background-color: rgba(78, 194, 194, 0.5); */
+          /* background: linear-gradient(45deg,#4EC2C2,#298D68,#BA1E4F,#E0824C); */
+          background: linear-gradient(
+            90deg,
+            rgba(78, 194, 194, 0.2),
+            rgba(41, 141, 104, 0.2),
+            rgba(186, 30, 79, 0.2),
+            rgba(224, 130, 76, 0.2)
+          );
+        }
+      }
+      .table__body {
+        & tr:nth-child(even) {
+          background-color: #ddd;
+        }
+        & tr {
+          text-transform: capitalize;
+        }
+        
+      }
+    }
+  }
+}
+
+/*
 .users-admin {
   font-family: 'Arial', sans-serif;
   margin: auto;
@@ -8,14 +80,12 @@
   width: 80%;
 }
 
-/* Estilo para el título */
 .users-admin__title {
   font-size: 28px;
   margin-bottom: 20px;
   color: #333;
 }
 
-/* Estilo para el botón "Get Users" */
 .users-admin__button {
   background-color: #007bff;
   color: #fff;
@@ -30,12 +100,10 @@
   background-color: #0056b3;
 }
 
-/* Estilo para la barra de búsqueda */
 .users-admin__search {
   margin-bottom: 20px;
 }
 
-/* Estilo para la tabla de usuarios */
 .users-admin__table-container {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -60,7 +128,6 @@
   text-align: left;
 }
 
-/* Estilo para las acciones en la tabla */
 .users-admin__table-actions button {
   background-color: #28a745;
   color: #fff;
@@ -77,7 +144,6 @@
   background-color: #1e7e34;
 }
 
-/* Estilo para el botón de eliminar */
 .users-admin__table-delete-button {
   background-color: #dc3545;
 }
@@ -86,7 +152,6 @@
   background-color: #c82333;
 }
 
-/* Estilo para la confirmación de eliminación */
 .users-admin__table-delete-confirmation {
   display: flex;
   flex-direction: column;
@@ -126,8 +191,7 @@
 
 .users-admin__table-delete-confirmation-no-button:hover {
   background-color: #0056b3;
-}
-
+}*/
 
 /* body, h1, h2, h3, p, ul, li {
     margin: 0;
@@ -168,13 +232,7 @@
   }
  */
 
-
-
-
-
-
-  
-   /* .botones:hover {
+/* .botones:hover {
     display: inline-block;
     padding: 10px 20px;
     background-color: #66ff00 ;

@@ -1,0 +1,42 @@
+.session-header {
+  width: 1200px;
+  height: 80px;
+  display: flex;
+  margin: 10px auto;
+  justify-content: space-around;
+  align-items: center;
+
+  & nav {
+    display: flex;
+    align-items: center;
+    & ul {
+      display: flex;
+      gap: 2rem;
+      & li {
+        list-style: none;
+        .link {
+          text-decoration: none;
+          font-weight: bold;
+          color: #231f20;
+          &:hover {
+            text-decoration: underline;
+            color: #ba1d4e;
+          }
+        }
+        .active {
+          color: #ba1d4e;
+        }
+      }
+    }
+  }
+
+  .img1 {
+    height: 60px;
+  }
+  .img2 {
+    height: 45px;
+  }
+  & img {
+    height: 100%;
+  }
+}

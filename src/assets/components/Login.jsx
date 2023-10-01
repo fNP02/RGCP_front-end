@@ -10,7 +10,7 @@ export const Login = () => {
   
   useEffect(() => {
     //si hay token, salta el paso, si no se queda
-  
+  document.title='RGCP - Login'
   }, [])
   
 
