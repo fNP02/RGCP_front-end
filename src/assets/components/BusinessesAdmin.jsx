@@ -7,7 +7,7 @@ import { SearchComponent } from "./SearchComponent";
 import { useOps } from "../store/Ops";
 
 export const BusinessesAdmin = () => {
-  const { getAllOps, allOps } = useUsers();
+  const { getAllOps, allOps } = useOps();
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
@@ -41,8 +41,8 @@ export const BusinessesAdmin = () => {
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Oportunidades</h1>
-      <button onClick={() => getAllUserss()}>Traer users</button>
-      <SearchComponent array={allUsers} setResExt={setResultsFound} />
+      <button onClick={() => getAllOps()}>Traer ops</button>
+      <SearchComponent array={allOps} setResExt={setResultsFound} />
       <div>
         <div className="usersAdmin-div-table">
           <table className="table">
@@ -54,7 +54,7 @@ export const BusinessesAdmin = () => {
               </tr>
             </thead>
             <tbody className="table__body">
-              {resultsFound?.map((user) => (
+              {resultsFound?.map((op) => (
                 <tr key={user.id} className="row">
                   <th>{user.id}</th>
                   <th>
