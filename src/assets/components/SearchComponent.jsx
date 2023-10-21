@@ -21,7 +21,7 @@ export const SearchComponent = ({ array, location, setResExt }) => {
 
   useEffect(() => {
     setResults(
-      array?.filter((user) => normalize(user.name).includes(normalize(term)) || normalize(user.last_name).includes(normalize(term)))
+      array?.filter((user) => normalize(user.name)?.includes(normalize(term)) || normalize(user.last_name)?.includes(normalize(term)))
     );
   }, [term]);
 

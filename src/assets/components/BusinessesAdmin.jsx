@@ -38,7 +38,6 @@ export const BusinessesAdmin = () => {
     setIdToDelete(null);
   };
 
-
   return (
     <div className="usersAdmin">
       <AdminHeader />
@@ -58,14 +57,12 @@ export const BusinessesAdmin = () => {
             <tbody className="table__body">
               {resultsFound?.map((op) => (
                 <tr key={op.id} className="row">
+                  <th>{op.imageUrl}</th>
                   <th>
                     <h4>{op.institution_name}</h4>
-                    {console.log(op.institution_name)}
                   </th>
-                  <th>{op.last_name}</th>
-                  <th>{op.rol}</th>
-                  <th>{op.institution_name}</th>
-                  <th>{op.job}</th>
+                  <th>{op.categorias}</th>
+                  <th>{op.descripcion}</th>
                   <th>
                     <div>
                       {!deletting && (
