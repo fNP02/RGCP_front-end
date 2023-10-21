@@ -7,7 +7,7 @@ import { SearchComponent } from "./SearchComponent";
 // import "../CSS/UsersPanel.css";
 
 export const UsersAdmin = () => {
-  const { getAllUsers, allUsers } = useUsers();
+  const { getAllUsers, allUsers, getAllUserss, allUserss } = useUsers();
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
@@ -16,6 +16,7 @@ export const UsersAdmin = () => {
 
   useEffect(() => {
     getAllUsers();
+    document.title='RGCP - Administración';
   }, []);
 
   useEffect(() => {
@@ -44,6 +45,7 @@ export const UsersAdmin = () => {
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Usuarios</h1>
+      <button onClick={()=>getAllUserss()}>Traer users</button>
       <SearchComponent array={allUsers} setResExt={setResultsFound} />
       <div>
         <div className="usersAdmin-div-table">

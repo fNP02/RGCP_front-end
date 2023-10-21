@@ -1,0 +1,73 @@
+[
+    {
+      "id": 1,
+      "institution_name": "Universidad de Buenos Aires",
+      "image-url": "https://www.uba.ar/sites/default/files/logo.png",
+      "categorias": ["arte", "ciencias sociales"],
+      "descripcion": "Universidad pública argentina fundada en 1821."
+    },
+    {
+      "id": 2,
+      "institution_name": "Universidad Nacional de Córdoba",
+      "image-url": "https://www.unc.edu.ar/img/logo_unc.png",
+      "categorias": ["humanidades", "medicina"],
+      "descripcion": "Universidad pública argentina fundada en 1613."
+    },
+    {
+      "id": 3,
+      "institution_name": "Universidad Nacional de La Plata",
+      "image-url": "https://www.unlp.edu.ar/assets/img/logo-unlp.png",
+      "categorias": ["ingeniería", "ciencias"],
+      "descripcion": "Universidad pública argentina fundada en 1890."
+    },
+    {
+      "id": 4,
+      "institution_name": "Universidad Nacional de Rosario",
+      "image-url": "https://www.unr.edu.ar/sites/default/files/logo-unr.png",
+      "categorias": ["derecho", "economía"],
+      "descripcion": "Universidad pública argentina fundada en 1919."
+    },
+    {
+      "id": 5,
+      "institution_name": "Universidad Nacional del Litoral",
+      "image-url": "https://www.unl.edu.ar/sites/default/files/logo-unl.png",
+      "categorias": ["ciencias naturales", "veterinaria"],
+      "descripcion": "Universidad pública argentina fundada en 1889."
+    },
+    {
+      "id": 6,
+      "institution_name": "Universidad Nacional de Tucumán",
+      "image-url": "https://www.unt.edu.ar/sites/default/files/logo_unt.png",
+      "categorias": ["educación", "tecnología"],
+      "descripcion": "Universidad pública argentina fundada en 1897."
+    },
+    {
+      "id": 7,
+      "institution_name": "Universidad Nacional de Cuyo",
+      "image-url": "https://www.uncuyo.edu.ar/img/logo_uncuyo.png",
+      "categorias": ["ingeniería", "agronomía"],
+      "descripcion": "Universidad pública argentina fundada en 1918."
+    },
+    {
+      "id": 8,
+      "institution_name": "Universidad Nacional de Mar del Plata",
+      "image-url": "https://www.mdp.edu.ar/sites/default/files/logo_unmdp.png",
+      "categorias": ["turismo", "artes"],
+      "descripcion": "Universidad pública argentina fundada en 1956."
+    },
+    {
+      "id": 9,
+      "institution_name": "Universidad Nacional de Entre Ríos",
+      "image-url": "https://www.uner.edu.ar/assets/img/logo-uner.png",
+      "categorias": ["derecho", "ciencias políticas"],
+      "descripcion": "Universidad pública argentina fundada en 1961."
+    },
+    {
+      "id": 10,
+      "institution_name": "Universidad Nacional de San Juan",
+      "image-url": "https://www.unsj.edu.ar/sites/default/files/logo_unsj.png",
+      "categorias": ["salud", "ciencias naturales"],
+      "descripcion": "Universidad pública argentina fundada en 1946."
+    }
+  ]
+  
