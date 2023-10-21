@@ -1,12 +1,15 @@
 import React from "react";
 import { useTabs } from "../store/Tabs";
 
+import { useNavigate } from "react-router-dom";
+
 import { AdminHeader } from "./AdminHeader";
 import { useEffect, useState } from "react";
 import { SearchComponent } from "./SearchComponent";
 import { useOps } from "../store/Ops";
 
 export const BusinessesAdmin = () => {
+  const navigate=useNavigate()
   const { getAllOps, allOps } = useOps();
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
@@ -42,8 +45,9 @@ export const BusinessesAdmin = () => {
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Oportunidades</h1>
-      <button onClick={() => getAllOps()}>Traer ops</button>
+      <button onClick={() => getAllOps()}>Mostrar todas</button>
       <SearchComponent array={allOps} setResExt={setResultsFound} />
+      <button onClick={()=>navigate('/op-create')}> Crear Nuevo</button>
       <div>
         <div className="usersAdmin-div-table">
           <table className="table">

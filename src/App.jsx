@@ -8,6 +8,7 @@ import { BusinessesAdmin } from "./assets/components/BusinessesAdmin";
 import { ProtectedRoute } from "./assets/components/ProtectedRoute";
 
 import './App.css'
+import { CreateOp } from "./assets/components/CreateOp";
 
 
 export const App = () => {
@@ -53,6 +54,7 @@ export const App = () => {
         >
           <Route path="/users-admin" element={<UsersAdmin />} />
           <Route path="/businesses-admin" element={<BusinessesAdmin />} />
+          <Route path="/op-create" element={<CreateOp/>} />
         </Route>
       </Routes>
     </BrowserRouter>
