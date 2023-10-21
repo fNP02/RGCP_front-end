@@ -40,13 +40,13 @@ export const BusinessesAdmin = () => {
 
 
   return (
-    <div className="usersAdmin-body">
+    <div className="usersAdmin">
       <AdminHeader />
       <h1>Administrador de Oportunidades</h1>
       <button onClick={() => getAllOps()}>Traer ops</button>
       <SearchComponent array={allOps} setResExt={setResultsFound} />
       <div>
-        <div className="usersAdmin-div-table">
+        <div className="usersAdmin-div">
           <table className="table">
             <thead className="table__head">
               <tr>
