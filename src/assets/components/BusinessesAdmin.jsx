@@ -21,6 +21,7 @@ export const BusinessesAdmin = () => {
 
   useEffect(() => {
     setResultsFound(allOps);
+    console.log(allOps);
   }, [allOps]);
 
   const fields = [
@@ -36,6 +37,7 @@ export const BusinessesAdmin = () => {
     // await delete user to the db
     setIdToDelete(null);
   };
+
 
   return (
     <div className="usersAdmin-body">
@@ -55,15 +57,15 @@ export const BusinessesAdmin = () => {
             </thead>
             <tbody className="table__body">
               {resultsFound?.map((op) => (
-                <tr key={user.id} className="row">
-                  <th>{user.id}</th>
+                <tr key={op.id} className="row">
                   <th>
-                    <h4>{user.name}</h4>
+                    <h4>{op.institution_name}</h4>
+                    {console.log(op.institution_name)}
                   </th>
-                  <th>{user.last_name}</th>
-                  <th>{user.rol}</th>
-                  <th>{user.institution_name}</th>
-                  <th>{user.job}</th>
+                  <th>{op.last_name}</th>
+                  <th>{op.rol}</th>
+                  <th>{op.institution_name}</th>
+                  <th>{op.job}</th>
                   <th>
                     <div>
                       {!deletting && (
@@ -72,7 +74,7 @@ export const BusinessesAdmin = () => {
                           <button
                             className="delete"
                             onClick={() => {
-                              setIdToDelete(user.id);
+                              setIdToDelete(op.id);
                               setDeletting(true);
                             }}
                           >
@@ -80,13 +82,13 @@ export const BusinessesAdmin = () => {
                           </button>
                         </div>
                       )}
-                      {idToDelete == user.id && (
+                      {idToDelete == op.id && (
                         <div className="confirmation">
                           <span>Borrar?</span>
                           <button
                             className="yes"
                             onClick={() => {
-                              handleDeleteUser(user.id);
+                              handleDeleteOp(op.id);
                               setDeletting(false);
                             }}
                           >

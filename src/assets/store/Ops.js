@@ -5,14 +5,13 @@ import jwtDecode from "jwt-decode";
 const API_URL=import.meta.env.VITE_API_URL
 
 export const useOps = create((set)=>({
-    allUsers:[],
-    allUserss:[],
+    allOps:[],
 
     getAllOps:async()=>{
         const res = await fetch('../ops.json')
         const data= await res.json()
         console.log(data);
-        set({ allUsers: data });
+        set({ allOps: data });
     },
 
     getAllUserss: async () => {
