@@ -13,7 +13,7 @@ const db = new sqlite3.Database('./src/BACK/database/RGCP_DB.db');
  * @param {String} trabajo_de 
  * @param {String} biografia
  */
-function CreateUserUG(nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia, callback) {
+export default function CreateUserUG(nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia, callback) {
     db.run("INSERT INTO usuarioGeneral (nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", [nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia], callback);
 }
 
@@ -64,5 +64,3 @@ function DeleteUserUG(UserGenID, callback) {
 //     UpdateUserUG,
 //     DeleteUserUG
 // }
-
-module.exports.CreateUserUG = CreateUserUG;
