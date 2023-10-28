@@ -7,9 +7,9 @@ import { UsersAdmin } from "./assets/components/UsersAdmin";
 import { BusinessesAdmin } from "./assets/components/BusinessesAdmin";
 import { ProtectedRoute } from "./assets/components/ProtectedRoute";
 
-import './App.css'
+import "./App.css";
 import { CreateOp } from "./assets/components/CreateOp";
-
+import { CreateUser } from "./assets/components/CreateUser";
 
 export const App = () => {
   const [user, setuser] = useState(null);
@@ -20,7 +20,7 @@ export const App = () => {
       id: 1,
       name: "John",
       permissions: ["admin"],
-      roles:['admin']
+      roles: ["admin"],
     });
   };
   const logout = () => setuser(null);
@@ -54,7 +54,8 @@ export const App = () => {
         >
           <Route path="/users-admin" element={<UsersAdmin />} />
           <Route path="/businesses-admin" element={<BusinessesAdmin />} />
-          <Route path="/op-create" element={<CreateOp/>} />
+          <Route path="/op-create" element={<CreateOp />} />
+          <Route path="/user-create" element={<CreateUser />} />
         </Route>
       </Routes>
     </BrowserRouter>

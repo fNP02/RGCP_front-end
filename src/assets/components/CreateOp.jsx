@@ -14,12 +14,19 @@ export const CreateOp = () => {
     setNewCat("");
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(name);
+    console.log(categories);
+    console.log(description);
+  };
+
   console.log(newCat);
   console.log(categories);
   return (
     <div>
       <h1>Creando nueva publicacion</h1>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <hr />
         <label htmlFor="">Nombre:</label>
         <input
@@ -31,7 +38,7 @@ export const CreateOp = () => {
         <div>
           <label>Categorías:</label>
           {categories?.map((cat) => (
-            <span>{` ${cat}`}</span>
+            <span key={cat}>{` ${cat}`}</span>
           ))}
           <br />
           <button
@@ -62,6 +69,8 @@ export const CreateOp = () => {
           cols="40"
           rows="5"
         ></textarea>
+        <hr />
+        <button type="submit">CREAR NUEVA PUBLICACIÓN</button>
       </form>
     </div>
   );

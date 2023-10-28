@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { useUsers } from "../store/Users";
 import { AdminHeader } from "./AdminHeader";
 import { SearchComponent } from "./SearchComponent";
-// import "../CSS/UsersPanel.css";
+
+import { useNavigate } from "react-router-dom";
 
 export const UsersAdmin = () => {
+  const navigate=useNavigate()
+
   const { getAllUsers, allUsers, getAllUserss, allUserss } = useUsers();
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
@@ -47,6 +50,7 @@ export const UsersAdmin = () => {
       <h1>Administrador de Usuarios</h1>
       <button onClick={()=>getAllUserss()}>Traer users</button>
       <SearchComponent array={allUsers} setResExt={setResultsFound} />
+      <button onClick={()=>navigate('/user-create')}> Crear Nuevo</button>
       <div>
         <div className="usersAdmin-div-table">
           <table className="table">
