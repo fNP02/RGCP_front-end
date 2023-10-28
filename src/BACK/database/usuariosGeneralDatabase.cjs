@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./src/database/RGCP_DB.db');
+const db = new sqlite3.Database('./src/BACK/database/RGCP_DB.db');
 
 /**
  * Guarda la info de un nuevo usuario
@@ -57,10 +57,12 @@ function DeleteUserUG(UserGenID, callback) {
     db.run("DELETE FROM usuarioGeneral WHERE UserGenID = ?", [UserGenID], callback);
 }
 
-module.exports = {
-    CreateUserUG,
-    ReadAllUserUG,
-    ReadUserUG,
-    UpdateUserUG,
-    DeleteUserUG
-}
+// module.exports = {
+//     CreateUserUG,
+//     ReadAllUserUG,
+//     ReadUserUG,
+//     UpdateUserUG,
+//     DeleteUserUG
+// }
+
+module.exports.CreateUserUG = CreateUserUG;

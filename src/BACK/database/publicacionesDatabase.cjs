@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./src/database/RGCP_DB.db');
+const db = new sqlite3.Database('./src/BACK/database/RGCP_DB.db');
 
 //Guarda la info de una nueva publicacion
 function CreatePubli(institucionName, img, categorias, descripcion, callback) {

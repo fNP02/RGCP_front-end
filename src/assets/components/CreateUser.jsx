@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
+import { CreateUserUG } from "../../BACK/database/usuariosGeneralDatabase.cjs";
+
 export const CreateUser = () => {
   const [newCat, setNewCat] = useState();
 
@@ -30,17 +32,25 @@ export const CreateUser = () => {
     console.log(workedAs);
     console.log(biography);
 
-    try {
-      const response = await fetch(`${API_URL}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        //body: JSON.stringify(body),
-      });
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
+    CreateUserUG(
+      name,
+      surname,
+      email,
+      age,
+      dni,
+      ambit,
+      discipline,
+      workedAs,
+      biography,
+      (err) => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("Usuario agregado correctamente");
+          res.redirect("/users-admin");
+        }
+      }
+    );
   };
 
   // nombre apellido email edad dni ambito disciplina trabajoDe biografia
