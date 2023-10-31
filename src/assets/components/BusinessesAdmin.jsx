@@ -28,8 +28,8 @@ export const BusinessesAdmin = () => {
   }, [allOps]);
 
   const fields = [
-    "Imagen",
     "Nombre de la institucion",
+    "Imagen",
     "Categoría",
     "Descripción",
     "Opciones",
@@ -61,11 +61,11 @@ export const BusinessesAdmin = () => {
             <tbody className="table__body">
               {resultsFound?.map((op) => (
                 <tr key={op.id} className="row">
-                  <th>{op.imageUrl}</th>
                   <th>
                     <h4>{op.institution_name}</h4>
                   </th>
-                  <th>{op.categorias}</th>
+                  <th>{op.imageUrl}</th>
+                  <th>{op.categorias.join(", ")}</th>
                   <th>{op.descripcion}</th>
                   <th>
                     <div>

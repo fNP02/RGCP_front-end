@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
 
-import { CreateUserUG } from "../../BACK/database/usuariosGeneralDatabase.cjs";
+//import { CreateUserUG } from "../../BACK/database/usuariosGeneralDatabase.cjs";
+//no arrancaba la pagina por eso lo comente
 
 export const CreateUser = () => {
   const [newCat, setNewCat] = useState();
