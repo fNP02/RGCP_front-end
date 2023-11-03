@@ -64,10 +64,10 @@ export const BusinessesAdmin = () => {
                   <th>
                     <h4>{op.institution_name}</h4>
                   </th>
-                  <th>{op.imageUrl}</th>
+                  <th><a href={op.imageUrl}>{op.imageUrl}</a></th>
                   <th>{op.categorias.join(", ")}</th>
                   <th>{op.descripcion}</th>
-                  <th>
+                  <th> 
                     <div>
                       {!deletting && (
                         <div className="buttons">
