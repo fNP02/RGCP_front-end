@@ -7,32 +7,43 @@ import { SearchComponent } from "./SearchComponent";
 
 import { useNavigate } from "react-router-dom";
 
+import { readAllUserSes } from "../../backend/firebase/databaseUserSession";
+
 export const UsersAdmin = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const { getAllUsers, allUsers, getAllUserss, allUserss } = useUsers();
+  const [allUss, setAllUss] = useState()
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
 
   const [deletting, setDeletting] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(true)
+
+
   useEffect(() => {
-    getAllUsers();
-    document.title='RGCP - Administración';
+    const traerAsync = async () => {
+      const allUsers= await readAllUserSes();
+      console.log(allUsers);
+      setAllUss(allUsers)
+    };
+
+    traerAsync()
+    document.title = "RGCP - Administración";
   }, []);
 
   useEffect(() => {
-    setResultsFound(allUsers);
-  }, [allUsers]);
+    setResultsFound(allUss);
+    setIsLoading(false)
+  }, [allUss]);
 
   const fields = [
     "id",
     "Nombre",
-    "last_name",
-    "rol",
-    "institution_name",
-    "job",
+    "Apellido",
+    "Rol",
     "Opciones",
   ];
 
@@ -41,16 +52,25 @@ export const UsersAdmin = () => {
   console.log(resultsFound);
   const handleDeleteUser = (id) => {
     //delete user to the db
-    setIdToDelete(null)
+    setIdToDelete(null);
   };
+
+
+  if(isLoading){
+    return (
+      <div>
+        <h1>Cargando...</h1>
+      </div>
+    )
+  }
 
   return (
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Usuarios</h1>
-      <button onClick={()=>getAllUserss()}>Traer users</button>
+      <button onClick={() => getAllUserss()}>Traer users</button>
       <SearchComponent array={allUsers} setResExt={setResultsFound} />
-      <button onClick={()=>navigate('/user-create')}> Crear Nuevo</button>
+      <button onClick={() => navigate("/user-create")}> Crear Nuevo</button>
       <div>
         <div className="usersAdmin-div-table">
           <table className="table">
@@ -63,22 +83,20 @@ export const UsersAdmin = () => {
             </thead>
             <tbody className="table__body">
               {resultsFound?.map((user) => (
-                <tr key={user.id} className="row">
-                  <th>{user.id}</th>
+                <tr key={user.userGenID} className="row">
+                  <th>{user.userGenID}</th>
                   <th>
-                    <h4>{user.name}</h4>
+                    <h4>{user.nombre}</h4>
                   </th>
-                  <th>{user.last_name}</th>
+                  <th>{user.apellido}</th>
                   <th>{user.rol}</th>
-                  <th>{user.institution_name}</th>
-                  <th>{user.job}</th>
                   <th>
                     <div>
                       {!deletting && (
                         <div className="buttons">
                           <button className="edit">Editar</button>
                           <button
-                          className="delete"
+                            className="delete"
                             onClick={() => {
                               setIdToDelete(user.id);
                               setDeletting(true);
@@ -92,19 +110,19 @@ export const UsersAdmin = () => {
                         <div className="confirmation">
                           <span>Borrar?</span>
                           <button
-                          className="yes"
+                            className="yes"
                             onClick={() => {
                               handleDeleteUser(user.id);
-                              setDeletting(false)
+                              setDeletting(false);
                             }}
                           >
                             Sí
                           </button>
                           <button
-                          className="no"
+                            className="no"
                             onClick={() => {
                               setIdToDelete(null);
-                              setDeletting(false)
+                              setDeletting(false);
                             }}
                           >
                             No
