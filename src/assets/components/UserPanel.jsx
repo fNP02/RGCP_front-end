@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const UserPanel = () => {
   const [completo, setCompleto] = useState(false);
@@ -23,7 +25,14 @@ export const UserPanel = () => {
       workedAs.trim() === "" ||
       biography.trim() === ""
     ) {
-      alert("Por favor complete todos los campos.");
+      toast.error("Por favor complete todos los campos", {
+        position: "bottom-center", // Cambiamos la posición a la parte inferior central
+        autoClose: 3000, // Duración en milisegundos
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     } else {
       // Los campos están completos, puedes realizar las acciones necesarias aquí
       setCompleto(true);
@@ -57,45 +66,56 @@ export const UserPanel = () => {
     <>
       <div>
         {!completo && (
-          <div>
-            <h2>Complete los datos de su perfil</h2>
-            <label htmlFor="">Nombre:</label>
-            <input
+          <div className="container-form">
+            <h2 className="usersAdmin-body">Complete los datos de su perfil</h2>
+            <div className="input-container">
+            <label  htmlFor="">Nombre: </label>
+            <input className="input"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <hr />
-            <label htmlFor="">Apellido:</label>
-            <input
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Apellido: </label>
+            <input className="input"
               type="text"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
             />
-            <hr />
-            <label htmlFor="">Correo Electrónico:</label>
-            <input
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Correo Electrónico: </label>
+            <input className="input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <hr />
-            <label htmlFor="">Edad:</label>
-            <input
+            </div>
+
+            <div className="input-container">
+            <label htmlFor="">Edad: </label>
+            <input className="input"
               onChange={(e) => setAge(e.target.value)}
               type="number"
               placeholder="Edad"
             />
-            <hr />
-            <label htmlFor="">DNI:</label>
-            <input
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">DNI: </label>
+            <input className="input"
               onChange={(e) => setDni(e.target.value)}
               type="text"
               placeholder="DNI"
             />
-            <hr />
-            <label htmlFor="">Ámbito:</label>
-              <select
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Ámbito: </label>
+              <select className="input"
                 value={ambit}
                 onChange={(e) => setAmbit(e.target.value)}
               >
@@ -106,9 +126,11 @@ export const UserPanel = () => {
                   </option>
                 ))}
               </select>
-            <hr />
-            <label htmlFor="">Disciplina:</label>
-            <select
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Disciplina: </label>
+            <select className="input"
               value={discipline}
               onChange={(e) => setDiscipline(e.target.value)}
             >
@@ -119,9 +141,11 @@ export const UserPanel = () => {
                 </option>
               ))}
             </select>
-            <hr />
-            <label htmlFor="">Trabajó de:</label>
-              <select
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Trabajó de: </label>
+              <select className="input"
                 value={workedAs}
                 onChange={(e) => setWorkedAs(e.target.value)}
               >
@@ -132,23 +156,25 @@ export const UserPanel = () => {
                   </option>
                 ))}
               </select>
-            <hr />
-            <label htmlFor="">Biografía:</label>
+            </div>
+            
+            <div className="input-container">
+            <label htmlFor="">Biografía: </label>
             <br />
-            <textarea
+            <textarea className="input"
               onChange={(e) => setBiography(e.target.value)}
               name=""
               id=""
               cols="40"
               rows="5"
             ></textarea>
-            <hr />
+            </div>
+            
             <button onClick={handleSave}>Guardar perfil</button>
-              
-          </div>
-          
+          </div>   
         )}
       </div>
+      <ToastContainer />
     </>
   );
 };

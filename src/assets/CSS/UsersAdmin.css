@@ -72,6 +72,23 @@
     }
   }
 }
+.input {
+  background-color: #f2f2f2; /* Cambia el color de fondo a tu elección */
+  border: 1px solid #ccc; /* Agrega un borde */
+  padding: 5px; /* Añade espacio entre el texto y el borde */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+  transition: box-shadow 0.3s; /* Agrega una transición de sombra al pasar el mouse */
+  cursor: pointer;
+}
+.input-container {
+  display: block; /* Hace que cada campo ocupe una línea completa */
+  margin-bottom: 10px; /* Agrega un margen inferior para separación */
+}
+/* .container-form {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+} */
 
 /*
 .users-admin {
