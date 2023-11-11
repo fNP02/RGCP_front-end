@@ -164,7 +164,7 @@ export const UserPanel = () => {
             </div>
             
             <div className="input-container">
-            <label className="categoria"htmlFor="">Biografía </label>
+            <label className="categoria" htmlFor="">Biografía </label>
             <textarea className="input"
               onChange={(e) => setBiography(e.target.value)}
               name=""
