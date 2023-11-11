@@ -14,24 +14,20 @@ import { CreateOp } from "./assets/components/CreateOp";
 import { CreateUser } from "./assets/components/CreateUser";
 
 import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebase/config";
 import { useUsers } from "./assets/store/Users";
 
 
 export const App = () => {
   const [user, setuser] = useState(null);
 
+  const {currentUser, setCurrentUser}=useUsers()
+
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser);
-      const getPermissions = async () => {
-        const docRef = doc(db, `users/${currentUser?.uid}`);
-        const info = await getDoc(docRef);
-        const permissions = info.data();
-        setCurrentUserPermissions(permissions);
-      };
-
-      getPermissions();
-      setLoading(false);
+      console.log(currentUser);
+      // setLoading(false);
     });
   }, []);
 
