@@ -139,6 +139,7 @@ export const UserPanel = () => {
                 <input className="input"
                   onChange={(e) => setDni(e.target.value)}
                   type="text"
+                  value={dni}
                   placeholder="DNI"
                 />
               </div>
@@ -146,6 +147,7 @@ export const UserPanel = () => {
                 <label className="categoria" htmlFor="">Edad </label>
                 <input className="input"
                   onChange={(e) => setAge(e.target.value)}
+                  value={age}
                   type="number"
                   placeholder="Edad"
                 />
@@ -205,6 +207,7 @@ export const UserPanel = () => {
                 id=""
                 cols="40"
                 rows="5"
+                value={biography}
               ></textarea>
             </div>
 
