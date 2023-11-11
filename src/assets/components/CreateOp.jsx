@@ -36,11 +36,12 @@ export const CreateOp = () => {
   // Render the component
   return (
     <div className="container-form">
-      <h1>Creando nueva publicacion</h1>
+      <h1>Nueva Oportunidad</h1>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="">Entidad o Persona que realiza el evento</label>
           <input
+            className="input"
             type="text"
             placeholder="Nombre del realizador"
             value={name}
@@ -65,8 +66,9 @@ export const CreateOp = () => {
           </div>
           </div>
           <input
+            className="input"
             type="text"
-            placeholder="nueva categoria"
+            placeholder="Nueva categoria"
             value={newCat}
             onChange={(e) => setNewCat(e.target.value)}
           />
@@ -88,8 +90,9 @@ export const CreateOp = () => {
         <div className="input-container">
           <label htmlFor="">Descripción</label>
           <textarea
-            cols="40"
-            rows="5"
+            className="input"
+            cols="60"
+            rows="10"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
@@ -97,6 +100,7 @@ export const CreateOp = () => {
         <div className="input-container">
           <label htmlFor="date">Fecha</label>
           <input
+            className="input"
             type="date"
             id="date"
             value={date}
@@ -106,6 +110,7 @@ export const CreateOp = () => {
         <div className="input-container">
           <label htmlFor="image">Imagen</label>
           <input
+            className="input"
             type="file"
             id="image"
             accept="image/*"
