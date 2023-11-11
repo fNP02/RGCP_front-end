@@ -7,7 +7,6 @@ import { SearchComponent } from "./SearchComponent";
 
 import { useNavigate } from "react-router-dom";
 
-import { readAllUserSes } from "../../backend/firebase/databaseUserSession";
 
 export const UsersAdmin = () => {
   const navigate = useNavigate();

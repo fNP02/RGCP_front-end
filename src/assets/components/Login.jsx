@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useValidate } from "../store/Validate";
+import { auth } from "../../firebase/config.js";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export const Login = () => {
   const {validateUser}=useValidate();
@@ -14,14 +16,15 @@ export const Login = () => {
   }, [])
   
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(userChange);
     console.log(passChange);
+    const userRef = await signInWithEmailAndPassword(auth, userChange, passChange);
+    console.log(userRef.user.uid);
     //validateUser(userChange,passChange)
     const currentTime=Date.now()/1000
     console.log(currentTime);
-
   };
   return (
     <>

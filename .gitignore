@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# firebase
+databasePublication.js
+databaseUserGen.js
+databaseUserSession.js
