@@ -3,6 +3,8 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserHeader } from "./UserHeader";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/config.js";
 
 export const UserPanel = () => {
   const [completo, setCompleto] = useState(false);
@@ -15,6 +17,9 @@ export const UserPanel = () => {
   const [discipline, setDiscipline] = useState("");
   const [workedAs, setWorkedAs] = useState("");
   const [biography, setBiography] = useState("");
+
+  const docRef = doc(db, "users", userId)
+
 
   const isCompleto = () =>  {
     return (
