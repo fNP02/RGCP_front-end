@@ -37,6 +37,7 @@ export const UserPanel = () => {
       // Los campos están completos, puedes realizar las acciones necesarias aquí
       setCompleto(true);
       setIsEditing(false);
+      //updateUserGen(id, name, surname, email, age, dni, ambit, discipline, workedAs, biography);
     }
   };
 
