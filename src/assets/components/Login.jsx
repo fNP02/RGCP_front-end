@@ -4,46 +4,78 @@ import { useValidate } from "../store/Validate";
 import { auth } from "../../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
+import { firebaseErrors } from "../../firebase/firebaseErrors.js";
+
 export const Login = () => {
   const { validateUser } = useValidate();
 
-
-
-  const [userChange, setUserChange] = useState()
-  const [passChange, setPassChange] = useState()
-  const [ errorChange, setErrorChange ] = useState('')
+  const [userChange, setUserChange] = useState();
+  const [passChange, setPassChange] = useState();
+  const [errorChange, setErrorChange] = useState("");
 
   useEffect(() => {
     //si hay token, salta el paso, si no se queda
-    document.title = 'RGCP - Login'
-  }, [])
-
+    document.title = "RGCP - Login";
+  }, []);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     console.log(userChange);
     console.log(passChange);
     try {
-      const userRef = await signInWithEmailAndPassword(auth, userChange, passChange);
+      const userRef = await signInWithEmailAndPassword(
+        auth,
+        userChange,
+        passChange
+      );
       console.log(userRef.user.uid);
       //Si el usuario ingresa
     } catch (error) {
       // El usuario tuvo errores
       console.log(error.message);
-      setErrorChange(error.message);
       console.log(error.code);
+      setErrorChange(error.code);
+      // const errorDisp = firebaseErrors(error.code);
+      // console.log(errorDisp);
+      // setErrorChange(errorDisp);
     }
     //validateUser(userChange,passChange)
-    const currentTime = Date.now() / 1000
+    const currentTime = Date.now() / 1000;
     console.log(currentTime);
   };
+
+  console.log(errorChange);
   return (
     <>
-      <div className="login">Login
+      <div className="login">
+        <h1>Login</h1>
+        {errorChange && (
+          <div style={{ color: "red" }}>
+            <p>{errorChange}</p>
+          </div>
+        )}
         <form className="form" action="" onSubmit={handleFormSubmit}>
-          <input className="imput" type="text" placeholder="Usuario" onChange={(e) => setUserChange(e.target.value)} />
-          <input className="imput" type="password" placeholder="Contraseña" onChange={(e) => setPassChange(e.target.value)} />
-          <button className="button" type="submit">Ingresar</button>
+          <input
+            className="imput"
+            type="text"
+            placeholder="Usuario"
+            onChange={(e) => {
+              setErrorChange("");
+              setUserChange(e.target.value);
+            }}
+          />
+          <input
+            className="imput"
+            type="password"
+            placeholder="Contraseña"
+            onChange={(e) => {
+              setErrorChange("");
+              setPassChange(e.target.value);
+            }}
+          />
+          <button className="button" type="submit">
+            Ingresar
+          </button>
         </form>
       </div>
     </>
