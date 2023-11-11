@@ -72,6 +72,162 @@
     }
   }
 }
+.input {
+  background-color: #f2f2f2; /* Cambia el color de fondo a tu elección */
+  border: 1px solid #ccc; /* Agrega un borde */
+  padding: 5px; /* Añade espacio entre el texto y el borde */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Agrega una sombra */
+  transition: box-shadow 0.3s; /* Agrega una transición de sombra al pasar el mouse */
+  cursor: pointer;
+}
+.input-container {
+  /* border: 1px solid green; */
+  display: flex; /* Hace que cada campo ocupe una línea completa */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0; /*Añade espacio entre los campos */
+  padding: 5px;
+}
+ .container-form {
+  /* border: 1px solid red;  */
+  /* padding: 10px;  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} 
+.parent {
+  /* border: 1px solid yellow; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.field-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: rgba(186, 30, 79, 1);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+.button-light {
+  background-color: rgba(186, 30, 79, 0.7); /* color de fondo más claro */
+  color: #fff;
+  border: none;
+  padding: 5px 10px; /* padding más pequeño */
+  font-size: 14px; /* tamaño de fuente más pequeño */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.button-light:hover {
+  background-color: rgba(224, 130, 76, 0.7); /* Cambia a tu color deseado */
+}
+
+.button-light:active {
+  background-color: rgba(41, 141, 104, 0.7);
+}
+.button-2{
+  background-color: rgba(227, 101, 141, 0.5); /* color de fondo más claro */
+  color: #fff;
+  border: none;
+  padding: 5px 10px; /* padding más pequeño */
+  font-size: 14px; /* tamaño de fuente más pequeño */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+.button-2:hover {
+  background-color: rgba(224, 130, 76, 0.5); /* Cambia a tu color deseado */
+}
+
+.button-2:active {
+  background-color: rgba(41, 141, 104, 0.5);
+}
+.button:hover {
+  background-color: rgba(224, 130, 76, 1); /* Cambia a tu color deseado */
+}
+.button:active {
+  background-color: rgba(41, 141, 104, 1);
+}
+.categoria {
+  padding-bottom: 2px;
+}
+.login{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f2f2f2;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.imput{
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+.op {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%; /* en móviles, queremos que el div ocupe todo el ancho */
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4); /* Agrega una sombra */
+  box-sizing: border-box; /* para que el padding y el borde no aumenten el tamaño del div */
+  margin: auto; /* para centrar el div */
+  margin-bottom: 30px;
+}
+
+/* Cuando la pantalla es de al menos 600px de ancho */
+@media (min-width: 600px) {
+  .op {
+    width: 33.33%; /* en pantallas más grandes, el div ocupará 1/3 del ancho */
+  }
+}
+.image {
+  width: 100%; /* para que la imagen ocupe todo el ancho del div */
+  height: auto; /* para mantener la proporción de la imagen */
+  padding: 20px;
+}
+.modal-image{
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category {
+  padding: 5px;
+  margin: 5px;
+  color: #fff;
+  border-radius: 5px;
+}
 
 /*
 .users-admin {

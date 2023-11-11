@@ -2,16 +2,16 @@
     {
       "id": 1,
       "institution_name": "Universidad de Buenos Aires",
-      "imageUrl": "https://www.uba.ar/sites/default/files/logo.png",
+      "imageUrl": "https://aptus.com.ar/wp-content/uploads/2021/03/UBA-200-DEF-rotated.jpg",
       "categorias": ["arte", "ciencias sociales"],
-      "descripcion": "Universidad pública argentina fundada en 1821."
+      "descripcion": "La Universidad de Buenos Aires conserva su memoria en el Archivo Histórico Presbítero Antonio Sáenz ubicado en el subsuelo de Pte. J.E.uriburu 950, que contiene un acervo documental importante que va desde la creación misma de la Universidad de Buenos Airesen 1821 hasta el año 1950."
     },
     {
       "id": 2,
       "institution_name": "Universidad Nacional de Córdoba",
-      "imageUrl": "https://www.unc.edu.ar/img/logo_unc.png",
+      "imageUrl": "https://noticias.unju.edu.ar/noticias/serv/notis/4313UNC-Campus-Virtual.jpg",
       "categorias": ["humanidades", "medicina"],
-      "descripcion": "Universidad pública argentina fundada en 1613."
+      "descripcion": "Universidad pública argentina fundada en 1613.La Universidad Nacional de Córdoba (UNC) es una universidad pública de Argentina. Tiene sede en la ciudad de Córdoba. Fundada el 19 de junio de 1613, es la más antigua del país y una de las primeras de América. Su enseñanza es libre, gratuita y laica. El apodo La Docta que tiene Córdoba se debe a que durante más de dos siglos fue la única universidad del país. Es considerada una de las tres instituciones más reconocidas del país, con un reconocimiento también a nivel internacional."
     },
     {
       "id": 3,

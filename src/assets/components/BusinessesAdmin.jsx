@@ -17,6 +17,7 @@ export const BusinessesAdmin = () => {
 
   const [deletting, setDeletting] = useState(false);
 
+  
   useEffect(() => {
     getAllOps();
     document.title = "RGCP - Administración";
@@ -28,11 +29,22 @@ export const BusinessesAdmin = () => {
   }, [allOps]);
 
   const fields = [
-    "Imagen",
     "Nombre de la institucion",
+    "Imagen",
     "Categoría",
     "Descripción",
     "Opciones",
+  ];
+
+  const categoriesOptions = [
+    "Artes visuales",
+    "Danza",
+    "Teatro",
+    "Performance/Circo/otras escénicas",
+    "Música",
+    "Patrimonio",
+    "Diseño",
+    "Otro",
   ];
 
   console.log(resultsFound);
@@ -61,27 +73,32 @@ export const BusinessesAdmin = () => {
             <tbody className="table__body">
               {resultsFound?.map((op) => (
                 <tr key={op.id} className="row">
-                  <th>{op.imageUrl}</th>
                   <th>
                     <h4>{op.institution_name}</h4>
                   </th>
-                  <th>{op.categorias}</th>
+                  <th><a href={op.imageUrl}>{op.imageUrl}</a></th>
+                  <th>{op.categorias.join(", ")}</th>
                   <th>{op.descripcion}</th>
-                  <th>
+                  <th> 
                     <div>
                       {!deletting && (
                         <div className="buttons">
-                          <button className="edit">Editar</button>
-                          <button
-                            className="delete"
-                            onClick={() => {
-                              setIdToDelete(op.id);
-                              setDeletting(true);
-                            }}
-                          >
-                            Eliminar
-                          </button>
-                        </div>
+                        <button
+                          className="edit"
+                          onClick={()=>navigate('/op-edit')}
+                        >
+                          Editar
+                        </button>
+                        <button
+                          className="delete"
+                          onClick={() => {
+                            setIdToDelete(op.id);
+                            setDeletting(true);
+                          }}
+                        >
+                          Eliminar
+                        </button>
+                      </div>
                       )}
                       {idToDelete == op.id && (
                         <div className="confirmation">
