@@ -3,7 +3,6 @@ import { useNavigate} from "react-router-dom";
 import { useOps } from "../store/Ops"; // Asegúrate de que este hook exista y funcione correctamente
 import { UserHeader } from "./UserHeader";
 import { SearchComponent } from "./SearchComponent";
-import { toast } from "react-toastify";
 import Modal from 'react-modal';
 
 export const UserPage = () => {
