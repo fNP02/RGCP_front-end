@@ -117,6 +117,41 @@
   transition: background-color 0.3s ease;
   margin: 10px;
 }
+.button-light {
+  background-color: rgba(186, 30, 79, 0.7); /* color de fondo más claro */
+  color: #fff;
+  border: none;
+  padding: 5px 10px; /* padding más pequeño */
+  font-size: 14px; /* tamaño de fuente más pequeño */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.button-light:hover {
+  background-color: rgba(224, 130, 76, 0.7); /* Cambia a tu color deseado */
+}
+
+.button-light:active {
+  background-color: rgba(41, 141, 104, 0.7);
+}
+.button-2{
+  background-color: rgba(227, 101, 141, 0.5); /* color de fondo más claro */
+  color: #fff;
+  border: none;
+  padding: 5px 10px; /* padding más pequeño */
+  font-size: 14px; /* tamaño de fuente más pequeño */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+.button-2:hover {
+  background-color: rgba(224, 130, 76, 0.5); /* Cambia a tu color deseado */
+}
+
+.button-2:active {
+  background-color: rgba(41, 141, 104, 0.5);
+}
 .button:hover {
   background-color: rgba(224, 130, 76, 1); /* Cambia a tu color deseado */
 }
@@ -160,7 +195,7 @@
   justify-content: center;
   padding: 20px;
   width: 100%; /* en móviles, queremos que el div ocupe todo el ancho */
-  border: 1px solid #000; /* borde negro */
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4); /* Agrega una sombra */
   box-sizing: border-box; /* para que el padding y el borde no aumenten el tamaño del div */
   margin: auto; /* para centrar el div */
   margin-bottom: 30px;
@@ -181,6 +216,17 @@
   width: 100%;
   height: auto;
   justify-content: center;
+}
+.categories-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category {
+  padding: 5px;
+  margin: 5px;
+  color: #fff;
+  border-radius: 5px;
 }
 
 /*

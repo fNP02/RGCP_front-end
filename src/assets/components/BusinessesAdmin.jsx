@@ -17,6 +17,7 @@ export const BusinessesAdmin = () => {
 
   const [deletting, setDeletting] = useState(false);
 
+  
   useEffect(() => {
     getAllOps();
     document.title = "RGCP - Administración";
@@ -82,17 +83,22 @@ export const BusinessesAdmin = () => {
                     <div>
                       {!deletting && (
                         <div className="buttons">
-                          <button className="edit">Editar</button>
-                          <button
-                            className="delete"
-                            onClick={() => {
-                              setIdToDelete(op.id);
-                              setDeletting(true);
-                            }}
-                          >
-                            Eliminar
-                          </button>
-                        </div>
+                        <button
+                          className="edit"
+                          onClick={()=>navigate('/op-edit')}
+                        >
+                          Editar
+                        </button>
+                        <button
+                          className="delete"
+                          onClick={() => {
+                            setIdToDelete(op.id);
+                            setDeletting(true);
+                          }}
+                        >
+                          Eliminar
+                        </button>
+                      </div>
                       )}
                       {idToDelete == op.id && (
                         <div className="confirmation">
