@@ -6,6 +6,7 @@ import { UserPanel } from "./assets/components/UserPanel";
 import { UsersAdmin } from "./assets/components/UsersAdmin";
 import { BusinessesAdmin } from "./assets/components/BusinessesAdmin";
 import { ProtectedRoute } from "./assets/components/ProtectedRoute";
+import { UserPage } from './assets/components/UserPage';
 
 import "./App.css";
 import { CreateOp } from "./assets/components/CreateOp";
@@ -56,6 +57,8 @@ export const App = () => {
           <Route path="/businesses-admin" element={<BusinessesAdmin />} />
           <Route path="/op-create" element={<CreateOp />} />
           <Route path="/user-create" element={<CreateUser />} />
+          <Route path="/user-page" element={<UserPage />} />
+
         </Route>
       </Routes>
     </BrowserRouter>
@@ -77,6 +80,9 @@ function Navigation() {
         </li>
         <li>
           <Link to="/businesses-admin">Bussineses Admin</Link>
+        </li>
+        <li>
+          <Link to="/user-page">User Page</Link>
         </li>
       </ul>
     </nav>

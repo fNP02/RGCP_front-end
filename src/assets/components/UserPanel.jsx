@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserHeader } from "./UserHeader";
 
 export const UserPanel = () => {
   const [completo, setCompleto] = useState(false);
@@ -15,15 +16,20 @@ export const UserPanel = () => {
   const [workedAs, setWorkedAs] = useState("");
   const [biography, setBiography] = useState("");
 
+  const isCompleto = () =>  {
+    return (
+      age.trim() !== "" &&
+      dni.trim() !== "" &&
+      ambit.trim() !== "" &&
+      discipline.trim() !== "" &&
+      workedAs.trim() !== "" &&
+      biography.trim() !== ""
+    );
+  }
   const handleSave = () => {
     // Validación de campos
     if (
-      age.trim() === "" ||
-      dni.trim() === "" ||
-      ambit.trim() === "" ||
-      discipline.trim() === "" ||
-      workedAs.trim() === "" ||
-      biography.trim() === ""
+      !isCompleto()
     ) {
       toast.error("Por favor complete todos los campos", {
         position: "bottom-center", // Cambiamos la posición a la parte inferior central
@@ -37,7 +43,7 @@ export const UserPanel = () => {
       // Los campos están completos, puedes realizar las acciones necesarias aquí
       setCompleto(true);
       setIsEditing(false);
-      //updateUserGen(id, name, surname, email, age, dni, ambit, discipline, workedAs, biography);
+      updateUserGen(id, name, surname, email, age, dni, ambit, discipline, workedAs, biography);
     }
   };
 
@@ -63,9 +69,12 @@ export const UserPanel = () => {
     "Otro",
   ];
 
+ 
+
   return (
     <>
       <div>
+      <UserHeader />
         {!completo && (
           <div className="container-form">
             <h2 >Complete los datos de su perfil</h2>

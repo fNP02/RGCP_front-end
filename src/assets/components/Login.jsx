@@ -25,12 +25,13 @@ export const Login = () => {
   };
   return (
     <>
-      <div>Login</div>
-      <form action="" onSubmit={handleFormSubmit}>
-        <input type="text" placeholder="Usuario" onChange={(e)=>setUserChange(e.target.value)}/>
-        <input type="password" placeholder="Contraseña" onChange={(e)=>setPassChange(e.target.value)}/>
-        <button type="submit">Ingresar</button>
+      <div className="login">Login
+      <form className="form" action="" onSubmit={handleFormSubmit}>
+        <input className="imput" type="text" placeholder="Usuario" onChange={(e)=>setUserChange(e.target.value)}/>
+        <input className="imput" type="password" placeholder="Contraseña" onChange={(e)=>setPassChange(e.target.value)}/>
+        <button className="button" type="submit">Ingresar</button>
       </form>
+      </div>
     </>
   );
 };

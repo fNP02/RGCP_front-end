@@ -35,6 +35,17 @@ export const BusinessesAdmin = () => {
     "Opciones",
   ];
 
+  const categoriesOptions = [
+    "Artes visuales",
+    "Danza",
+    "Teatro",
+    "Performance/Circo/otras escénicas",
+    "Música",
+    "Patrimonio",
+    "Diseño",
+    "Otro",
+  ];
+
   console.log(resultsFound);
   const handleDeleteOp = (id) => {
     // await delete user to the db

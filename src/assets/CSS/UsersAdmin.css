@@ -126,6 +126,63 @@
 .categoria {
   padding-bottom: 2px;
 }
+.login{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f2f2f2;
+  width: 300px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.imput{
+  margin: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+}
+.op {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 100%; /* en móviles, queremos que el div ocupe todo el ancho */
+  border: 1px solid #000; /* borde negro */
+  box-sizing: border-box; /* para que el padding y el borde no aumenten el tamaño del div */
+  margin: auto; /* para centrar el div */
+  margin-bottom: 30px;
+}
+
+/* Cuando la pantalla es de al menos 600px de ancho */
+@media (min-width: 600px) {
+  .op {
+    width: 33.33%; /* en pantallas más grandes, el div ocupará 1/3 del ancho */
+  }
+}
+.image {
+  width: 100%; /* para que la imagen ocupe todo el ancho del div */
+  height: auto; /* para mantener la proporción de la imagen */
+  padding: 20px;
+}
+.modal-image{
+  width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
 /*
 .users-admin {
   font-family: 'Arial', sans-serif;
