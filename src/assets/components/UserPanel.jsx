@@ -67,54 +67,59 @@ export const UserPanel = () => {
       <div>
         {!completo && (
           <div className="container-form">
-            <h2 className="usersAdmin-body">Complete los datos de su perfil</h2>
+            <h2 >Complete los datos de su perfil</h2>
+            
+            <div className="field-group">
+
             <div className="input-container">
-            <label  htmlFor="">Nombre: </label>
+            <label  className="categoria" htmlFor="">Nombre </label>
             <input className="input"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            </div>
-            
+
+            </div> 
             <div className="input-container">
-            <label htmlFor="">Apellido: </label>
+            <label className="categoria"htmlFor="">Apellido </label>
             <input className="input"
               type="text"
               value={surname}
               onChange={(e) => setSurname(e.target.value)}
             />
             </div>
-            
+            </div>
+
             <div className="input-container">
-            <label htmlFor="">Correo Electrónico: </label>
+            <label className="categoria" htmlFor="">Correo Electrónico </label>
             <input className="input"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             </div>
-
-            <div className="input-container">
-            <label htmlFor="">Edad: </label>
-            <input className="input"
-              onChange={(e) => setAge(e.target.value)}
-              type="number"
-              placeholder="Edad"
-            />
-            </div>
+            <div className="field-group">
             
             <div className="input-container">
-            <label htmlFor="">DNI: </label>
+            <label className="categoria"htmlFor="">DNI </label>
             <input className="input"
               onChange={(e) => setDni(e.target.value)}
               type="text"
               placeholder="DNI"
             />
             </div>
-            
             <div className="input-container">
-            <label htmlFor="">Ámbito: </label>
+            <label className="categoria"htmlFor="">Edad </label>
+            <input className="input"
+              onChange={(e) => setAge(e.target.value)}
+              type="number"
+              placeholder="Edad"
+            />
+            </div>
+            </div>
+
+            <div className="input-container">
+            <label className="categoria"htmlFor="">Ámbito </label>
               <select className="input"
                 value={ambit}
                 onChange={(e) => setAmbit(e.target.value)}
@@ -129,7 +134,7 @@ export const UserPanel = () => {
             </div>
             
             <div className="input-container">
-            <label htmlFor="">Disciplina: </label>
+            <label className="categoria"htmlFor="">Disciplina </label>
             <select className="input"
               value={discipline}
               onChange={(e) => setDiscipline(e.target.value)}
@@ -144,7 +149,7 @@ export const UserPanel = () => {
             </div>
             
             <div className="input-container">
-            <label htmlFor="">Trabajó de: </label>
+            <label className="categoria"htmlFor="">Trabajó de </label>
               <select className="input"
                 value={workedAs}
                 onChange={(e) => setWorkedAs(e.target.value)}
@@ -159,8 +164,7 @@ export const UserPanel = () => {
             </div>
             
             <div className="input-container">
-            <label htmlFor="">Biografía: </label>
-            <br />
+            <label className="categoria"htmlFor="">Biografía </label>
             <textarea className="input"
               onChange={(e) => setBiography(e.target.value)}
               name=""
@@ -170,7 +174,7 @@ export const UserPanel = () => {
             ></textarea>
             </div>
             
-            <button onClick={handleSave}>Guardar perfil</button>
+            <button className="button" onClick={handleSave}>Guardar perfil</button>
           </div>   
         )}
       </div>
