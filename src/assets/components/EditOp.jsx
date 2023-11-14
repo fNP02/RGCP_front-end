@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export const EditOp = () => {
   // Define state variables
   const [newCat, setNewCat] = useState("Musica");
-  const [name, setName] = useState("La Universidad De Buenos Aires Conserva Su Memoria");
+  const [name, setName] = useState("La Universidad De Buenos Aires");
   const [categories, setCategories] = useState([]);
   const [description, setDescription] = useState("La Universidad De Buenos Aires Conserva Su Memoria En El Archivo Histórico Presbítero Antonio Sáenz Ubicado En El Subsuelo De Pte. J.E.Uriburu 950, Que Contiene Un Acervo Documental Importante Que Va Desde La Creación Misma De La Universidad De Buenos Airesen 1821 Hasta El Año 1950.");
   const [date, setDate] = useState("18-11-2001");
@@ -36,15 +36,17 @@ export const EditOp = () => {
   // Render the component
   return (
     <div className="container-form">
-      <h1>Editando publicacion</h1>
+      <h1>Editar Oportunidad</h1>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="">Entidad o Persona que realiza el evento</label>
           <input
+            className="input"
             type="text"
             placeholder="Nombre del realizador"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            style={{ width: '75%', height: '20px' }} 
           />
         </div>
         <div className="input-container">
@@ -65,8 +67,9 @@ export const EditOp = () => {
           </div>
           </div>
           <input
+            className="input"
             type="text"
-            placeholder="nueva categoria"
+            placeholder="Nueva categoria"
             value={newCat}
             onChange={(e) => setNewCat(e.target.value)}
           />
@@ -88,8 +91,9 @@ export const EditOp = () => {
         <div className="input-container">
           <label htmlFor="">Descripción</label>
           <textarea
-            cols="40"
-            rows="5"
+            className="input"
+            cols="60"
+            rows="10"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           ></textarea>
@@ -97,6 +101,7 @@ export const EditOp = () => {
         <div className="input-container">
           <label htmlFor="date">Fecha</label>
           <input
+            className="input"
             type="date"
             id="date"
             value={date}
@@ -106,6 +111,7 @@ export const EditOp = () => {
         <div className="input-container">
           <label htmlFor="image">Imagen</label>
           <input
+            className="input"
             type="file"
             id="image"
             accept="image/*"

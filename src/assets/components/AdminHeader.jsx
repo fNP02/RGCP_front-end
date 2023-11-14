@@ -26,7 +26,7 @@ export const AdminHeader = () => {
               className={`link ${tabActive == "UsersAdmin" ? "active" : ""}`}
               to="/users-admin"
             >
-              Users Admin
+              Administrador de Usuarios
             </Link>
           </li>
           <li onClick={() => setTabActive("BussinesesAdmin")}>
@@ -36,7 +36,7 @@ export const AdminHeader = () => {
               }`}
               to="/businesses-admin"
             >
-              Bussineses Admin
+              Administrador de Oportunidades
             </Link>
           </li>
           <li onClick={handleCloseSession}>
