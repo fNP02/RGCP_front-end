@@ -21,7 +21,8 @@ import { useUsers } from "./assets/store/Users";
 export const App = () => {
   const [user, setuser] = useState(null);
 
-  const {currentUser, setCurrentUser}=useUsers()
+
+  const { currentUser, setCurrentUser } = useUsers();
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -42,29 +43,43 @@ export const App = () => {
   };
   const logout = () => setuser(null);
 
+  console.log(currentUser.email);
   return (
     <BrowserRouter basename="/">
       <Navigation />
-      {user ? (
+      {/* {user ? (
         <button onClick={logout}>Logout</button>
       ) : (
         <button onClick={login}>Login</button>
-      )}
+      )} */}
       <Routes>
         <Route index element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route
+        {/* <Route
           path="/user-panel"
           element={
-            <ProtectedRoute isAllowed={!!user}>
+            <ProtectedRoute isAllowed={!!currentUser}>
               <UserPanel />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           element={
             <ProtectedRoute
-              isAllowed={!!user && user.permissions.includes("admin")}
+              isAllowed={!!currentUser}
+              // isAllowed={!!currentUser && user.permissions.includes("admin")}
+              redirectTo="/login"
+            />
+          }
+        >
+          <Route path="/user-panel" element={<UserPanel/>} />
+          <Route path="/user-page" element={<UserPage />} />
+        </Route>
+        <Route
+          element={
+            <ProtectedRoute
+              isAllowed={!!currentUser && currentUser.email=='jeftbook@gmail.com'}
+              // isAllowed={!!currentUser && user.permissions.includes("admin")}
               redirectTo="/user-panel"
             />
           }

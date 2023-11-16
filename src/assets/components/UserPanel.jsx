@@ -18,7 +18,7 @@ export const UserPanel = () => {
   const [workedAs, setWorkedAs] = useState("");
   const [biography, setBiography] = useState("");
 
-  const docRef = doc(db, "users", userId)
+  // const docRef = doc(db, "users", userId)
 
 
   const isCompleto = () =>  {
