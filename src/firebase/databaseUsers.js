@@ -49,7 +49,8 @@ export async function readAllUser() {
             ambito: doc.data().ambito,
             disciplina: doc.data().disciplina,
             trabajo_de: doc.data().trabajo_de,
-            biografia: doc.data().biografia
+            biografia: doc.data().biografia,
+            rol: doc.data().rol
         });
     });
     return dataUsers;
