@@ -16,27 +16,6 @@ export const UserPanel = () => {
   const [workedAs, setWorkedAs] = useState("");
   const [biography, setBiography] = useState("");
 
-  
-  // Traer datos del usuario 
-  async function readUser() {
-    const docRef = doc(db, "users", 'p2yKmutiP8XjecN0HfManzVGEl32');
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      console.log("Document data:", docSnap.data());
-      setName(docSnap.data().nombre);
-      setSurname(docSnap.data().apellido);
-      setEmail(docSnap.data().email);
-      setAge(docSnap.data().edad);
-      setDni(docSnap.data().dni);
-      setAmbit(docSnap.data().ambito);
-      setDiscipline(docSnap.data().disciplina);
-      setWorkedAs(docSnap.data().trabajo_de);
-      setBiography(docSnap.data().biografia);
-    } else {
-      console.log("No such document!");
-    }
-  }
-
 
   const isCompleto = () => {
     return (

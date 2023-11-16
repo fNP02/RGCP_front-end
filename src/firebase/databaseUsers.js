@@ -1,4 +1,4 @@
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, getDocs, getDoc, collection, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "./config.js";
 
 /**
