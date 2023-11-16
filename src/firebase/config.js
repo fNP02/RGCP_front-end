@@ -8,12 +8,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDsqzfjCNMvOxLbPgLFGvqOTIYiNB8xqBk",
-    authDomain: "rgcp-dbv2.firebaseapp.com",
-    projectId: "rgcp-dbv2",
-    storageBucket: "rgcp-dbv2.appspot.com",
-    messagingSenderId: "1087928146742",
-    appId: "1:1087928146742:web:ee15f39858dea6cdb47197"
+    apiKey: "AIzaSyAYi7CLvMxNw22l7zVcnNQ9-omBli_qYpw",
+    authDomain: "rgcp-dbv3.firebaseapp.com",
+    projectId: "rgcp-dbv3",
+    storageBucket: "rgcp-dbv3.appspot.com",
+    messagingSenderId: "956583689646",
+    appId: "1:956583689646:web:b7d2a648e2b2af32d7dc3f"
 };
 
 // Initialize Firebase

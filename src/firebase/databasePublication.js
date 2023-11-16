@@ -1,5 +1,6 @@
+import { query } from "express";
 import { db } from "./config.js";
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc, where } from "firebase/firestore";
 
 /**
  * Crea una nueva publicacion
@@ -80,4 +81,21 @@ export async function updatePubli(id, institucionName, img, categorias, descripc
 export async function deletePubli(id) {
     await deleteDoc(doc(db, "publication", id));
     console.log('Publicacion eliminada.');
+}
+
+
+export async function filterPubli(disciplina) {
+    const q = query(collection(db, "publication"), where(disciplina, "==", categorias));
+    const PubliFiltradas = [];
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        PubliFiltradas.push({
+            id: doc.id,
+            institucionName: doc.data().institucionName,
+            img: doc.data().img,
+            categorias: doc.data().categorias,
+            descripcion: doc.data().descripcion,
+            fechaDeCreacionDB: doc.data().fechaDeCreacionDB
+        });
+    });
 }
