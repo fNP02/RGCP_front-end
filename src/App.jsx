@@ -13,56 +13,57 @@ import "./App.css";
 import { CreateOp } from "./assets/components/CreateOp";
 import { CreateUser } from "./assets/components/CreateUser";
 
+import { useOps } from "./assets/store/Ops";
+
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { useUsers } from "./assets/store/Users";
-
+import { doc } from "firebase/firestore";
+import { db } from "./firebase/config";
+import { getDoc } from "firebase/firestore";
 
 export const App = () => {
   const [user, setuser] = useState(null);
 
+  const {
+    currentUser,
+    setCurrentUser,
+    setCurrentDataUser,
+    currentDataUser,
+    isLoading,
+    setIsLoading,
+  } = useUsers();
 
-  const { currentUser, setCurrentUser } = useUsers();
+  const { getAllOps } = useOps();
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setCurrentUser(currentUser);
       console.log(currentUser);
+      const getPermissions = async () => {
+        const docRef = doc(db, `users/${currentUser?.uid}`);
+        const info = await getDoc(docRef);
+        const permissions = info.data();
+        setCurrentDataUser(permissions);
+        setIsLoading(false);
+        console.log(permissions);
+      };
+
+      getPermissions();
+      getAllOps();
       // setLoading(false);
     });
   }, []);
 
-  const login = () => {
-    //request
-    setuser({
-      id: 1,
-      name: "John",
-      permissions: ["admin"],
-      roles: ["admin"],
-    });
-  };
-  const logout = () => setuser(null);
-
-  console.log(currentUser.email);
+  console.log(currentUser);
   return (
     <BrowserRouter basename="/">
       <Navigation />
-      {/* {user ? (
-        <button onClick={logout}>Logout</button>
-      ) : (
-        <button onClick={login}>Login</button>
-      )} */}
+
       <Routes>
         <Route index element={<Login />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route
-          path="/user-panel"
-          element={
-            <ProtectedRoute isAllowed={!!currentUser}>
-              <UserPanel />
-            </ProtectedRoute>
-          }
-        /> */}
+
         <Route
           element={
             <ProtectedRoute
@@ -72,13 +73,13 @@ export const App = () => {
             />
           }
         >
-          <Route path="/user-panel" element={<UserPanel/>} />
+          <Route path="/user-panel" element={<UserPanel />} />
           <Route path="/user-page" element={<UserPage />} />
         </Route>
         <Route
           element={
             <ProtectedRoute
-              isAllowed={!!currentUser && currentUser.email=='jeftbook@gmail.com'}
+              isAllowed={!!currentUser && currentDataUser.rol == "Admin"}
               // isAllowed={!!currentUser && user.permissions.includes("admin")}
               redirectTo="/user-panel"
             />

@@ -40,12 +40,12 @@ export const UserPage = () => {
             <div className="ops-table">
                 {allOps.map((op) => (
                     <div className="op" key={op.id}>
-                        <h4 className="institution">{op.institution_name}</h4>
-                        <h7 className="categorias">{op.categorias.join(", ")}</h7>
+                        <h4 className="institution">{op.institucionName}</h4>
+                        <h7 className="categorias">{op.categorias.join(" - ")}</h7>
 
                         <img
-                            className="image"
-                            src={op.imageUrl}
+                            className="opImage"
+                            src={op.img}
                             alt="Imagen no disponible"
                             onClick={(e) => {
                                 e.preventDefault();
@@ -53,6 +53,7 @@ export const UserPage = () => {
                             }}
                         />
                         <p className="descripcion">{op.descripcion}</p>
+                        <p className="fecha"> {op.fechaDelEvento} </p>
                     </div>
                 ))}
                 <Modal

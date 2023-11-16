@@ -8,19 +8,25 @@ import { useEffect, useState } from "react";
 import { SearchComponent } from "./SearchComponent";
 import { useOps } from "../store/Ops";
 
+import { deletePubli } from "../../firebase/databasePublication.js";
+
 export const BusinessesAdmin = () => {
-  const navigate=useNavigate()
-  const { getAllOps, allOps } = useOps();
+  const navigate = useNavigate();
+  const { getAllOps, allOps, editing, setEditing } = useOps();
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
 
   const [deletting, setDeletting] = useState(false);
 
-  
   useEffect(() => {
+    // const funcion = async ()=>{
+    //   const publi = await readAllPubli();
+    // }
+
     getAllOps();
     document.title = "RGCP - Administración";
+    setEditing(null)
   }, []);
 
   useEffect(() => {
@@ -48,18 +54,29 @@ export const BusinessesAdmin = () => {
   ];
 
   console.log(resultsFound);
-  const handleDeleteOp = (id) => {
+  const handleDeleteOp = async (id) => {
     // await delete user to the db
+    await deletePubli(id);
+    getAllOps();
     setIdToDelete(null);
   };
 
+  const handleEditOp=(op)=>{
+    console.log(op);
+    setEditing(op)
+    navigate("/op-create")
+  }
+
+  console.log(allOps);
+  console.log('editandooooo?');
+  console.log(editing);
   return (
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Oportunidades</h1>
       <button onClick={() => getAllOps()}>Mostrar todas</button>
       <SearchComponent array={allOps} setResExt={setResultsFound} />
-      <button onClick={()=>navigate('/op-create')}> Crear Nuevo</button>
+      <button onClick={() => navigate("/op-create")}> Crear Nuevo</button>
       <div>
         <div className="usersAdmin-div-table">
           <table className="table">
@@ -74,31 +91,30 @@ export const BusinessesAdmin = () => {
               {resultsFound?.map((op) => (
                 <tr key={op.id} className="row">
                   <th>
-                    <h4>{op.institution_name}</h4>
+                    <h4>{op.institucionName}</h4>
                   </th>
-                  <th><a href={op.imageUrl}>{op.imageUrl}</a></th>
+                  <th>
+                    <img className="opImageMini" src={op.img} alt="" />
+                  </th>
                   <th>{op.categorias.join(", ")}</th>
                   <th>{op.descripcion}</th>
-                  <th> 
+                  <th>
                     <div>
                       {!deletting && (
                         <div className="buttons">
-                        <button
-                          className="edit"
-                          onClick={()=>navigate('/op-edit')}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          className="delete"
-                          onClick={() => {
-                            setIdToDelete(op.id);
-                            setDeletting(true);
-                          }}
-                        >
-                          Eliminar
-                        </button>
-                      </div>
+                          <button className="edit" onClick={()=>handleEditOp(op)}>
+                            Editar
+                          </button>
+                          <button
+                            className="delete"
+                            onClick={() => {
+                              setIdToDelete(op.id);
+                              setDeletting(true);
+                            }}
+                          >
+                            Eliminar
+                          </button>
+                        </div>
                       )}
                       {idToDelete == op.id && (
                         <div className="confirmation">

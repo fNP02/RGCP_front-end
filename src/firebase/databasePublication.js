@@ -1,6 +1,5 @@
-import { query } from "express";
 import { db } from "./config.js";
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc, where, query } from "firebase/firestore";
 
 /**
  * Crea una nueva publicacion
@@ -10,12 +9,13 @@ import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, serverTimestamp, u
  * @param {String} categorias 
  * @param {String} descripcion 
  */
-export async function addPubli(institucionName, img, categorias, descripcion) {
+export async function addPubli(institucionName, img, categorias, descripcion, fechaDelEvento) {
     const docRef = await addDoc(collection(db, "publication"), {
         institucionName: institucionName,
         img: img,
         categorias: categorias,
         descripcion: descripcion,
+        fechaDelEvento: fechaDelEvento,
         fechaDeCreacionDB: serverTimestamp(),
         timeData: serverTimestamp()
     })

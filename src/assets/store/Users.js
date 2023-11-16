@@ -8,9 +8,19 @@ export const useUsers = create((set)=>({
     allUsers:[],
     allUserss:[],
     currentUser: [],
-    
+    currentDataUser: [],
+    isLoading:[true],
+
     setCurrentUser: (user) => {
       set({ currentUser: user });
+    },
+    
+    setCurrentDataUser: (data) => {
+      set({ currentDataUser: data });
+    },
+
+    setIsLoading: (data) => {
+      set({ isLoading: data });
     },
 
     getAllUsers:async()=>{
