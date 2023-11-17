@@ -6,6 +6,7 @@ import { UserHeader } from "./UserHeader";
 
 import { useUsers } from "../store/Users";
 import { updateUser } from "../../firebase/databaseUsers.js";
+import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/constants';
 
 export const UserPanel = () => {
   const { currentUser, currentDataUser, isLoading } = useUsers();
@@ -100,27 +101,6 @@ export const UserPanel = () => {
     }
   };
 
-  const disciplinaOptions = [
-    "Artes visuales",
-    "Danza",
-    "Teatro",
-    "Performance/Circo/otras escénicas",
-    "Música",
-    "Patrimonio",
-    "Diseño",
-    "Otro",
-  ];
-
-  const ambitoOptions = ["Público", "Privado", "Independiente", "Mixto"];
-
-  const trabajoOptions = [
-    "Gestión Cultural",
-    "Producción de eventos",
-    "Management/Representación",
-    "Artista/Dir. de Proyectos",
-    "Investigación",
-    "Otro",
-  ];
 
   console.log(currentUser);
   console.log(currentDataUser);
@@ -255,7 +235,7 @@ console.log(age);
                 <option disabled value="">
                   Selecciona una disciplina
                 </option>
-                {disciplinaOptions.map((option, index) => (
+                {categoriesOptions.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
                   </option>

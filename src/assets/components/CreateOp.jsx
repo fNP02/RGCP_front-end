@@ -5,6 +5,7 @@ import { uploadFilePost } from "../../firebase/imgDB.js";
 import { useNavigate } from "react-router-dom";
 
 import { useOps } from "../store/Ops.js";
+import { categoriesOptions } from '../store/constants';
 
 export const CreateOp = () => {
   const navigate = useNavigate();
@@ -96,7 +97,7 @@ export const CreateOp = () => {
           />
         </div>
         <div className="input-container">
-          <label>Categorías</label>
+        <label>Categorías</label>
           <div className="field-group">
             <div className="categories-container">
               {categories?.map((cat, index) => (
@@ -112,13 +113,18 @@ export const CreateOp = () => {
               ))}
             </div>
           </div>
-          <input
+          <select
             className="input"
-            type="text"
-            placeholder="Nueva categoria"
             value={newCat}
             onChange={(e) => setNewCat(e.target.value)}
-          />
+          >
+            <option value="">Selecciona una categoría</option>
+            {categoriesOptions.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
           <div className="field-group">
             <button className="button-2" onClick={handleAddCat}>
               Agregar Categoria

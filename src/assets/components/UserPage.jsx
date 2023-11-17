@@ -41,7 +41,7 @@ export const UserPage = () => {
                 {allOps.map((op) => (
                     <div className="op" key={op.id}>
                         <h4 className="institution">{op.institucionName}</h4>
-                        <h7 className="categorias">{op.categorias.join(" - ")}</h7>
+                        <h5 className="categorias">{op.categorias.join(" - ")}</h5>
 
                         <img
                             className="opImage"
