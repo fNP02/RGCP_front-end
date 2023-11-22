@@ -230,6 +230,14 @@
   border-radius: 5px;
 }
 
+
+
+.opImage{
+  height: 300px;
+}
+.opImageMini{
+  height: 50px;
+}
 /*
 .users-admin {
   font-family: 'Arial', sans-serif;

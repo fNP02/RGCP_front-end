@@ -7,6 +7,9 @@ import { SearchComponent } from "./SearchComponent";
 
 import { useNavigate } from "react-router-dom";
 
+import { readAllUser } from "../../firebase/databaseUsers.js";
+
+
 
 export const UsersAdmin = () => {
   const navigate = useNavigate();
@@ -24,7 +27,7 @@ export const UsersAdmin = () => {
 
   useEffect(() => {
     const traerAsync = async () => {
-      const allUsers= await readAllUserSes();
+      const allUsers = await readAllUser(); //Todo bien?
       console.log(allUsers);
       setAllUss(allUsers)
     };

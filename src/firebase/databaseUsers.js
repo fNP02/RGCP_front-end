@@ -87,7 +87,7 @@ export async function readUser(id) {
  * @param {String} biografia 
  */
 export async function updateUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia) {
-    await updateDoc(doc(db, "userGen", id), {
+    await updateDoc(doc(db, "users", id), {
         nombre: nombre,
         apellido: apellido,
         email: email,
@@ -106,6 +106,6 @@ export async function updateUser(id, nombre, apellido, email, edad, dni, ambito,
  * @param {String} id 
  */
 export async function deleteUser(id) {
-    await deleteDoc(doc(db, "userGen", id));
+    await deleteDoc(doc(db, "users", id));
     console.log('Usuario eliminado.');
 };

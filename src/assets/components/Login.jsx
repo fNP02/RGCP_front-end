@@ -3,11 +3,15 @@ import { useState, useEffect } from "react";
 import { useValidate } from "../store/Validate";
 import { auth } from "../../firebase/config.js";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 import { firebaseErrors } from "../../firebase/firebaseErrors.js";
 
 export const Login = () => {
   const { validateUser } = useValidate();
+
+  const navigate = useNavigate();
+
 
   const [userChange, setUserChange] = useState();
   const [passChange, setPassChange] = useState();
@@ -30,6 +34,7 @@ export const Login = () => {
       );
       console.log(userRef.user.uid);
       //Si el usuario ingresa
+      navigate("/users-admin");
     } catch (error) {
       // El usuario tuvo errores
       console.log(error.message);

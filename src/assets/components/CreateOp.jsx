@@ -1,7 +1,15 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { addPubli, updatePubli } from "../../firebase/databasePublication.js";
+import { uploadFilePost } from "../../firebase/imgDB.js";
+import { useNavigate } from "react-router-dom";
+
+import { useOps } from "../store/Ops.js";
 
 export const CreateOp = () => {
+  const navigate = useNavigate();
+  const { editing, setEditing } = useOps();
+
   // Define state variables
   const [newCat, setNewCat] = useState("");
   const [name, setName] = useState("");
@@ -17,27 +25,66 @@ export const CreateOp = () => {
     setCategories([...categories, { name: newCat, color }]);
     setNewCat("");
   };
+
+  const handleUploadImage = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    const imgFile = await uploadFilePost(file);
+    console.log(imgFile);
+    setImage(imgFile);
+  };
+
+  useEffect(() => {
+    if(editing){
+      console.log(editing);
+      setName(editing.institucionName)
+      setCategories(editing.categories)
+      setDescription(editing.descripcion)
+      setDate(editing.fechaDelEvento)
+      setImage(editing.img)
+    }
+  }, [])
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     console.log(name);
+    console.log(image);
     console.log(categories);
     console.log(description);
+    const cats = categories.map((cat) => cat.name);
+    console.log(cats);
+
+    if (editing) {
+      //editar
+      await updatePubli(editing.id,
+        name,
+        cats,
+        description,
+        date,
+        image);
+        setEditing(null)
+    } else {
+      await addPubli(name, image, cats, description, date);
+    }
+    navigate("/businesses-admin");
   };
 
   const colors = [
-    'rgba(227, 101, 141, 0.5)',
-    'rgba(224, 130, 76, 0.5)',
-    'rgba(41, 141, 104, 0.5)',
-    'rgba(173, 216, 230, 1)', 
+    "rgba(227, 101, 141, 0.5)",
+    "rgba(224, 130, 76, 0.5)",
+    "rgba(41, 141, 104, 0.5)",
+    "rgba(173, 216, 230, 1)",
   ];
 
+  console.log(editing);
+  // console.log(typeof date);
   // Render the component
   return (
     <div className="container-form">
       <h1>Nueva Oportunidad</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className="input-container">
           <label htmlFor="">Entidad o Persona que realiza el evento</label>
           <input
@@ -49,21 +96,21 @@ export const CreateOp = () => {
           />
         </div>
         <div className="input-container">
-            <label>Categorías</label>
+          <label>Categorías</label>
           <div className="field-group">
-          <div className="categories-container">
-            {categories?.map((cat, index) => (
-              <span
-                key={index}
-                className="category"
-                style={{
-                  backgroundColor: colors[index % colors.length],
-                }}
-              >
-                {cat.name}
-              </span>
-            ))}
-          </div>
+            <div className="categories-container">
+              {categories?.map((cat, index) => (
+                <span
+                  key={index}
+                  className="category"
+                  style={{
+                    backgroundColor: colors[index % colors.length],
+                  }}
+                >
+                  {cat.name}
+                </span>
+              ))}
+            </div>
           </div>
           <input
             className="input"
@@ -114,8 +161,9 @@ export const CreateOp = () => {
             type="file"
             id="image"
             accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={handleUploadImage} //uploadFilePost(e.target.files[0])
           />
+          {image && <img className="opImage" src={image} alt="" />}
         </div>
         <div className="input-container">
           <button className="button" type="submit">

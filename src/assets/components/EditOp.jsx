@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 export const EditOp = () => {
   // Define state variables
-  const [newCat, setNewCat] = useState("Musica");
-  const [name, setName] = useState("La Universidad De Buenos Aires");
+  const [newCat, setNewCat] = useState("");
+  const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
-  const [description, setDescription] = useState("La Universidad De Buenos Aires Conserva Su Memoria En El Archivo Histórico Presbítero Antonio Sáenz Ubicado En El Subsuelo De Pte. J.E.Uriburu 950, Que Contiene Un Acervo Documental Importante Que Va Desde La Creación Misma De La Universidad De Buenos Airesen 1821 Hasta El Año 1950.");
-  const [date, setDate] = useState("18-11-2001");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
   const [image, setImage] = useState(null);
 
   // Define event handlers
@@ -115,7 +115,7 @@ export const EditOp = () => {
             type="file"
             id="image"
             accept="image/*"
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => setImage(uploadFilePost(e.target.files[0]))}
           />
         </div>
         <div className="input-container">
