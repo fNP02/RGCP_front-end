@@ -39,7 +39,12 @@ export const CreateOp = () => {
     if(editing){
       console.log(editing);
       setName(editing.institucionName)
-      setCategories(editing.categories)
+      if(editing.categorias) {
+        setCategories(editing.categorias.map((cat, index) => {
+          const color = colors[index % colors.length];
+          return { name: cat, color };
+        }))
+      }
       setDescription(editing.descripcion)
       setDate(editing.fechaDelEvento)
       setImage(editing.img)
@@ -49,6 +54,7 @@ export const CreateOp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(editing.id);
 
     console.log(name);
     console.log(image);
@@ -57,15 +63,16 @@ export const CreateOp = () => {
     const cats = categories.map((cat) => cat.name);
     console.log(cats);
 
+
     if (editing) {
       //editar
       await updatePubli(editing.id,
         name,
+        image,
         cats,
         description,
-        date,
-        image);
-        setEditing(null)
+        date);
+        setEditing(null);
     } else {
       await addPubli(name, image, cats, description, date);
     }
@@ -80,6 +87,7 @@ export const CreateOp = () => {
   ];
 
   console.log(editing);
+  // console.log(editing.categorias);
   // console.log(typeof date);
   // Render the component
   return (
@@ -97,7 +105,7 @@ export const CreateOp = () => {
           />
         </div>
         <div className="input-container">
-        <label>Categorías</label>
+          <label>Categorías</label>
           <div className="field-group">
             <div className="categories-container">
               {categories?.map((cat, index) => (
@@ -105,27 +113,28 @@ export const CreateOp = () => {
                   key={index}
                   className="category"
                   style={{
-                    backgroundColor: colors[index % colors.length],
+                    backgroundColor: cat.color,
                   }}
                 >
                   {cat.name}
                 </span>
               ))}
             </div>
-          </div>
-          <select
-            className="input"
-            value={newCat}
-            onChange={(e) => setNewCat(e.target.value)}
-          >
-            <option value="">Selecciona una categoría</option>
-            {categoriesOptions.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-          <div className="field-group">
+            
+            </div>
+            <select
+              className="input"
+              value={newCat}
+              onChange={(e) => setNewCat(e.target.value)}
+            >
+              <option value="">Selecciona una categoría</option>
+              {categoriesOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <div className="field-group">
             <button className="button-2" onClick={handleAddCat}>
               Agregar Categoria
             </button>
@@ -137,9 +146,9 @@ export const CreateOp = () => {
               }}
             >
               Borrar Categorias
-            </button>
+            </button>   
+            </div>        
           </div>
-        </div>
         <div className="input-container">
           <label htmlFor="">Descripción</label>
           <textarea
@@ -173,7 +182,7 @@ export const CreateOp = () => {
         </div>
         <div className="input-container">
           <button className="button" type="submit">
-            CREAR NUEVA OPORTUNIDAD
+            {editing ? 'GUARDAR' : 'CREAR NUEVA OPORTUNIDAD'}
           </button>
           <Link to="/businesses-admin" className="button-light">
             CANCELAR

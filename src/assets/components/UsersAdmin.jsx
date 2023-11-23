@@ -27,11 +27,14 @@ export const UsersAdmin = () => {
 
   useEffect(() => {
     const traerAsync = async () => {
-      const allUsers = await readAllUser(); //Todo bien?
-      console.log(allUsers);
-      setAllUss(allUsers)
+      try {
+        const allUsers = await readAllUser();
+        console.log(allUsers);
+        setAllUss(allUsers);
+      } catch (error) {
+        console.error("Error al obtener todos los usuarios:", error);
+      }
     };
-
     traerAsync()
     document.title = "RGCP - Administración";
   }, []);
@@ -85,8 +88,8 @@ export const UsersAdmin = () => {
             </thead>
             <tbody className="table__body">
               {resultsFound?.map((user) => (
-                <tr key={user.userGenID} className="row">
-                  <th>{user.userGenID}</th>
+                <tr key={user.id} className="row">
+                  <th>{user.id}</th>
                   <th>
                     <h4>{user.nombre}</h4>
                   </th>
