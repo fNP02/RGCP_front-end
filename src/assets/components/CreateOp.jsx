@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import { addPubli, updatePubli } from "../../firebase/databasePublication.js";
 import { uploadFilePost } from "../../firebase/imgDB.js";
 import { useNavigate } from "react-router-dom";
-
 import { useOps } from "../store/Ops.js";
-import { categoriesOptions } from '../store/constants';
+import { categoriesOptions, colors } from '../store/constants';
 
 export const CreateOp = () => {
   const navigate = useNavigate();
   const { editing, setEditing } = useOps();
 
-  // Define state variables
   const [newCat, setNewCat] = useState("");
   const [name, setName] = useState("");
   const [categories, setCategories] = useState([]);
@@ -19,7 +17,6 @@ export const CreateOp = () => {
   const [date, setDate] = useState("");
   const [image, setImage] = useState(null);
 
-  // Define event handlers
   const handleAddCat = (e) => {
     e.preventDefault();
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -50,49 +47,25 @@ export const CreateOp = () => {
       setImage(editing.img)
     }
   }, [])
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(editing.id);
-
-    console.log(name);
-    console.log(image);
-    console.log(categories);
-    console.log(description);
     const cats = categories.map((cat) => cat.name);
-    console.log(cats);
 
 
     if (editing) {
-      //editar
-      await updatePubli(editing.id,
-        name,
-        image,
-        cats,
-        description,
-        date);
-        setEditing(null);
+      await updatePubli(editing.id, name, image, cats, description, date);
+      setEditing(null);
     } else {
       await addPubli(name, image, cats, description, date);
     }
     navigate("/businesses-admin");
   };
 
-  const colors = [
-    "rgba(227, 101, 141, 0.5)",
-    "rgba(224, 130, 76, 0.5)",
-    "rgba(41, 141, 104, 0.5)",
-    "rgba(173, 216, 230, 1)",
-  ];
 
-  console.log(editing);
-  // console.log(editing.categorias);
-  // console.log(typeof date);
-  // Render the component
   return (
     <div className="container-form">
-      <h1>Nueva Oportunidad</h1>
+      <h1>{editing ? 'Editar Oportunidad' : 'Nueva Oportunidad'}</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="input-container">
           <label htmlFor="">Entidad o Persona que realiza el evento</label>
@@ -120,21 +93,20 @@ export const CreateOp = () => {
                 </span>
               ))}
             </div>
-            
-            </div>
-            <select
-              className="input"
-              value={newCat}
-              onChange={(e) => setNewCat(e.target.value)}
-            >
-              <option value="">Selecciona una categoría</option>
-              {categoriesOptions.map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            <div className="field-group">
+          </div>
+          <select
+            className="input"
+            value={newCat}
+            onChange={(e) => setNewCat(e.target.value)}
+          >
+            <option value="">Selecciona una categoría</option>
+            {categoriesOptions.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <div className="field-group">
             <button className="button-2" onClick={handleAddCat}>
               Agregar Categoria
             </button>
@@ -146,9 +118,9 @@ export const CreateOp = () => {
               }}
             >
               Borrar Categorias
-            </button>   
-            </div>        
+            </button>
           </div>
+        </div>
         <div className="input-container">
           <label htmlFor="">Descripción</label>
           <textarea
@@ -176,7 +148,7 @@ export const CreateOp = () => {
             type="file"
             id="image"
             accept="image/*"
-            onChange={handleUploadImage} //uploadFilePost(e.target.files[0])
+            onChange={handleUploadImage}
           />
           {image && <img className="opImage" src={image} alt="" />}
         </div>

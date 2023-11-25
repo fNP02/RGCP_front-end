@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useOps } from "../store/Ops"; // Asegúrate de que este hook exista y funcione correctamente
 import { UserHeader } from "./UserHeader";
 import { SearchComponent } from "./SearchComponent";
+import { colors } from '../store/constants';
 import Modal from 'react-modal';
 
 export const UserPage = () => {
@@ -12,8 +13,11 @@ export const UserPage = () => {
     const [shouldRedirect, setShouldRedirect] = useState(false);
     const { getAllOps, allOps } = useOps();
     const [resultsFound, setResultsFound] = useState(null);
+
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [zoom, setZoom] = useState(1);
 
     const openModal = (imageUrl) => {
         setSelectedImage(imageUrl);
@@ -23,6 +27,11 @@ export const UserPage = () => {
     const closeModal = () => {
         setModalIsOpen(false);
     };
+
+    const handleClick = () => {
+        setZoom(prevZoom => prevZoom === 1 ? 2 : 1);
+      };
+
     useEffect(() => {
         // Reemplaza getOps con la función que uses para obtener las ops
         const fetchOps = async () => {
@@ -34,24 +43,39 @@ export const UserPage = () => {
     }, []);
 
 
+
     return (
-        <div>
+        <div className="div-molesto">
             <UserHeader />
-            <div className="ops-table">
+            <div className="user-page-div">
                 {allOps.map((op) => (
                     <div className="op" key={op.id}>
-                        <h4 className="institution">{op.institucionName}</h4>
-                        <h5 className="categorias">{op.categorias.join(" - ")}</h5>
-
+                        <h2 className="institution">{op.institucionName}</h2>
+                        <br />
+                        <h5 className="categorias">
+                            {op.categorias.map((categoria, index) => (
+                                <span
+                                key={index}
+                                className="category"
+                                style={{
+                                    backgroundColor: colors[index % colors.length],
+                                }}
+                                >
+                                {categoria}
+                                </span>
+                            ))}
+                        </h5>
+                        <br />
                         <img
-                            className="opImage"
+                            className="image"
                             src={op.img}
                             alt="Imagen no disponible"
                             onClick={(e) => {
                                 e.preventDefault();
-                                openModal(op.imageUrl);
+                                openModal(op.img);
                             }}
                         />
+                        <br />
                         <p className="descripcion">{op.descripcion}</p>
                         <p className="fecha"> {op.fechaDelEvento} </p>
                     </div>
@@ -67,13 +91,22 @@ export const UserPage = () => {
                             justifyContent: 'center',
                         },
                         content: {
-                            width: '50%',
-                            position: 'relative',
-                            margin: 'auto',
+                            width: '90%',
+                            height: 'auto',
+                            position: 'absolute',
+                            left: '50%',
+                            top: '50%',
+                            transform: 'translate(-50%, -50%)',
                         },
                     }}
                 >
-                    <img className="modal-image" src={selectedImage} alt="Imagen seleccionada" />
+                   <img
+                        className="modal-image"
+                        src={selectedImage}
+                        alt="Imagen seleccionada"
+                        style={{ transform: `scale(${zoom})` }}
+                        onClick={handleClick}
+                    />
                 </Modal>
             </div>
         </div>

@@ -1,6 +1,5 @@
 .session-header {
-  width: 1200px;
-  height: 80px;
+  width: 100%;
   display: flex;
   margin: 10px auto;
   justify-content: space-around;
@@ -29,6 +28,19 @@
       }
     }
   }
+  @media (max-width: 768px) {
+    .img2, .img1 {
+      display: none;
+    }
+  
+    .nav-links {
+      display: none;
+    }
+  
+    .menu-btn {
+      display: block;
+    }
+  }
 
   .img1 {
     height: 60px;
@@ -40,3 +52,4 @@
     height: 100%;
   }
 }
+

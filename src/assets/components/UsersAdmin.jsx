@@ -13,7 +13,6 @@ import { readAllUser } from "../../firebase/databaseUsers.js";
 
 export const UsersAdmin = () => {
   const navigate = useNavigate();
-
   const { getAllUsers, allUsers, getAllUserss, allUserss } = useUsers();
   const [allUss, setAllUss] = useState()
   const { setTabTitle } = useTabs();

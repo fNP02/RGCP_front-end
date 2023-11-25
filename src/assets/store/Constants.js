@@ -19,3 +19,9 @@ export const categoriesOptions = [
     "Investigación",
     "Otro",
   ];
+  export const colors = [
+    "rgba(227, 101, 141, 0.5)",
+    "rgba(224, 130, 76, 0.5)",
+    "rgba(41, 141, 104, 0.5)",
+    "rgba(173, 216, 230, 1)",
+  ];
