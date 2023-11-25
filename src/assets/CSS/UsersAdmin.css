@@ -59,14 +59,15 @@
     rgba(186, 30, 79, 0.2),
     rgba(224, 130, 76, 0.2));
 }
+.lapsus{
+  text-transform: lowercase;
+}
 
 .usersAdmin-div-table .table__body tr:nth-child(even) {
   background-color: #ddd;
 }
 
-.usersAdmin-div-table .table__body tr {
-  text-transform: capitalize;
-}
+
 
 .fecha {
   text-align: right;

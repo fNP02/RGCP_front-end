@@ -7,7 +7,7 @@ import { SearchComponent } from "./SearchComponent";
 
 import { useNavigate } from "react-router-dom";
 
-import { readAllUser } from "../../firebase/databaseUsers.js";
+import { deleteUser, readAllUser, updateEstado, updateUser } from "../../firebase/databaseUsers.js";
 
 
 
@@ -20,28 +20,30 @@ export const UsersAdmin = () => {
   const [idToDelete, setIdToDelete] = useState(null);
   const [deletting, setDeletting] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
+  
 
+  const traerAsync = async () => {
+    try {
+      const allUsers = await readAllUser();
+      console.log(allUsers);
+      setAllUss(allUsers);
+    } catch (error) {
+      console.error("Error al obtener todos los usuarios:", error);
+    }
+  };
+  
   useEffect(() => {
-    const traerAsync = async () => {
-      try {
-        const allUsers = await readAllUser();
-        console.log(allUsers);
-        setAllUss(allUsers);
-      } catch (error) {
-        console.error("Error al obtener todos los usuarios:", error);
-      }
-    };
-    traerAsync()
+    traerAsync();
     document.title = "RGCP - Administración";
   }, []);
-
+  
   useEffect(() => {
     setResultsFound(allUss);
     setIsLoading(false)
   }, [allUss]);
 
   const fields = [
-    "id",
+    "Email",
     "Nombre",
     "Apellido",
     "Rol",
@@ -51,10 +53,43 @@ export const UsersAdmin = () => {
   //const results=SearchComponent.getResults(allUsers)
 
   console.log(resultsFound);
-  const handleDeleteUser = (id) => {
-    //delete user to the db
+  const handleDeleteUser = async (id) => {
+    const response = await fetch(`https://rgcp-backend.onrender.com/account/${id}`, {
+      method: 'DELETE',
+      mode: 'cors',
+    });
+  
+    if (response.ok) {
+      console.log('Usuario eliminado');
+      traerAsync();
+    } else {
+      console.log('Error al eliminar el usuario');
+    }
+  
     setIdToDelete(null);
   };
+
+  const handleBlockUser = async (id, estado) => {
+    const response = await fetch('https://rgcp-backend.onrender.com/account/block', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        estado: estado,
+      }),
+    });
+
+    if (response.ok) {
+      await updateEstado(id, estado);
+      traerAsync();
+    } else {
+      console.log('Error al actualizar el usuario');
+    }
+  };
+
 
 
   if (isLoading) {
@@ -85,7 +120,7 @@ export const UsersAdmin = () => {
             <tbody className="table__body">
               {resultsFound?.map((user) => (
                 <tr key={user.id} className="row">
-                  <th>{user.id}</th>
+                  <th className="lapsus">{user.email}</th>
                   <th>
                     <h4>{user.nombre}</h4>
                   </th>
@@ -95,7 +130,6 @@ export const UsersAdmin = () => {
                     <div>
                       {!deletting && (
                         <div className="buttons">
-                          <button className="edit">Editar</button>
                           <button
                             className="delete"
                             onClick={() => {
@@ -105,6 +139,11 @@ export const UsersAdmin = () => {
                           >
                             Eliminar
                           </button>
+                          {user.estado ? (
+                            <button onClick={() => handleBlockUser(user.id, false)}>Desbloquear</button>
+                          ) : (
+                            <button onClick={() => handleBlockUser(user.id, true)}>Bloquear</button>
+                          )}
                         </div>
                       )}
                       {idToDelete == user.id && (

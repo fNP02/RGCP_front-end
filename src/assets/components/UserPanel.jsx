@@ -1,11 +1,16 @@
-import React, { useId } from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserHeader } from "./UserHeader";
 import { useUsers } from "../store/Users";
 import { updateUser } from "../../firebase/databaseUsers.js";
 import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/constants';
+
+/**
+ * UserPanel component.
+ * 
+ * @returns {JSX.Element} The rendered UserPanel component.
+ */
 
 export const UserPanel = () => {
   const { currentUser, currentDataUser, isLoading } = useUsers();
@@ -17,9 +22,7 @@ export const UserPanel = () => {
   const [age, setAge] = useState(currentDataUser.edad || "");
   const [dni, setDni] = useState(currentDataUser.dni || "");
   const [ambit, setAmbit] = useState(currentDataUser.ambito || "");
-  const [discipline, setDiscipline] = useState(
-    currentDataUser.disciplina || ""
-  );
+  const [discipline, setDiscipline] = useState(currentDataUser.disciplina || "");
   const [workedAs, setWorkedAs] = useState(currentDataUser.trabajo_de || "");
   const [biography, setBiography] = useState(currentDataUser.biografia || "");
 
@@ -55,6 +58,7 @@ export const UserPanel = () => {
 
     return isValid ? 1 : 0;
   }
+
   const isCompleto = () => {
     return (
       age.trim() !== "" &&
@@ -71,17 +75,15 @@ export const UserPanel = () => {
     // Validación de campos
     if (!isCompleto()) {
       toast.error("Por favor complete todos los campos", {
-        position: "bottom-center", // Cambiamos la posición a la parte inferior central
-        autoClose: 3000, // Duración en milisegundos
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
       });
     } else {
-      // Los campos están completos, puedes realizar las acciones necesarias aquí
       setCompleto(true);
-      // updateUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia)
       updateUser(
         currentUser.uid,
         name,
@@ -96,13 +98,6 @@ export const UserPanel = () => {
       );
     }
   };
-
-
-  console.log(currentUser);
-  console.log(currentDataUser);
-  console.log(isLoading);
-
-  console.log(age);
 
   if (isLoading) {
     return (
@@ -200,7 +195,6 @@ export const UserPanel = () => {
             </div>
 
             <div className="input-container">
-              {console.log(ambit)}
               <label className="categoria" htmlFor="">
                 Ámbito{" "}
               </label>
@@ -241,7 +235,6 @@ export const UserPanel = () => {
             </div>
 
             <div className="input-container">
-              {console.log(workedAs)}
               <label className="categoria" htmlFor="">
                 Trabajó de{" "}
               </label>
@@ -286,5 +279,6 @@ export const UserPanel = () => {
     </>
   );
 };
+
 
 export default UserPanel;
