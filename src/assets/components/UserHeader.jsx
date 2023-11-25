@@ -30,12 +30,12 @@ export const UserHeader = () => {
           </li>
           <li onClick={(event) => setTabActive("UserPage")}>
             <Link
-                className={`link ${tabActive == "UserPage" ? "active" : ""}`}
-                to="/user-page"
+              className={`link ${tabActive == "UserPage" ? "active" : ""}`}
+              to="/user-page"
             >
-                Oportunidades
+              Oportunidades
             </Link>
-        </li>
+          </li>
           <li onClick={handleCloseSession}>
             <Link className="link">Cerrar sesion</Link>
           </li>

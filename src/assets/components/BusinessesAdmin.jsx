@@ -9,6 +9,7 @@ import { SearchComponent } from "./SearchComponent";
 import { useOps } from "../store/Ops";
 
 import { deletePubli } from "../../firebase/databasePublication.js";
+import { categoriesOptions } from '../store/constants';
 
 export const BusinessesAdmin = () => {
   const navigate = useNavigate();
@@ -40,17 +41,6 @@ export const BusinessesAdmin = () => {
     "Categoría",
     "Descripción",
     "Opciones",
-  ];
-
-  const categoriesOptions = [
-    "Artes visuales",
-    "Danza",
-    "Teatro",
-    "Performance/Circo/otras escénicas",
-    "Música",
-    "Patrimonio",
-    "Diseño",
-    "Otro",
   ];
 
   console.log(resultsFound);
@@ -97,7 +87,7 @@ export const BusinessesAdmin = () => {
                     <img className="opImageMini" src={op.img} alt="" />
                   </th>
                   <th>{op.categorias.join(", ")}</th>
-                  <th>{op.descripcion}</th>
+                  <th>{op.descripcion.substring(0, 100) + (op.descripcion.length > 100 ? "..." : "")}</th>
                   <th>
                     <div>
                       {!deletting && (

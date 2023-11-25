@@ -7,42 +7,43 @@ import { SearchComponent } from "./SearchComponent";
 
 import { useNavigate } from "react-router-dom";
 
-import { readAllUser } from "../../firebase/databaseUsers.js";
+import { deleteUser, readAllUser, updateEstado, updateUser } from "../../firebase/databaseUsers.js";
 
 
 
 export const UsersAdmin = () => {
   const navigate = useNavigate();
-
   const { getAllUsers, allUsers, getAllUserss, allUserss } = useUsers();
   const [allUss, setAllUss] = useState()
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
-
   const [deletting, setDeletting] = useState(false);
-
   const [isLoading, setIsLoading] = useState(true)
+  
 
-
-  useEffect(() => {
-    const traerAsync = async () => {
-      const allUsers = await readAllUser(); //Todo bien?
+  const traerAsync = async () => {
+    try {
+      const allUsers = await readAllUser();
       console.log(allUsers);
-      setAllUss(allUsers)
-    };
-
-    traerAsync()
+      setAllUss(allUsers);
+    } catch (error) {
+      console.error("Error al obtener todos los usuarios:", error);
+    }
+  };
+  
+  useEffect(() => {
+    traerAsync();
     document.title = "RGCP - Administración";
   }, []);
-
+  
   useEffect(() => {
     setResultsFound(allUss);
     setIsLoading(false)
   }, [allUss]);
 
   const fields = [
-    "id",
+    "Email",
     "Nombre",
     "Apellido",
     "Rol",
@@ -52,13 +53,46 @@ export const UsersAdmin = () => {
   //const results=SearchComponent.getResults(allUsers)
 
   console.log(resultsFound);
-  const handleDeleteUser = (id) => {
-    //delete user to the db
+  const handleDeleteUser = async (id) => {
+    const response = await fetch(`https://rgcp-backend.onrender.com/account/${id}`, {
+      method: 'DELETE',
+      mode: 'cors',
+    });
+  
+    if (response.ok) {
+      console.log('Usuario eliminado');
+      traerAsync();
+    } else {
+      console.log('Error al eliminar el usuario');
+    }
+  
     setIdToDelete(null);
   };
 
+  const handleBlockUser = async (id, estado) => {
+    const response = await fetch('https://rgcp-backend.onrender.com/account/block', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: id,
+        estado: estado,
+      }),
+    });
 
-  if(isLoading){
+    if (response.ok) {
+      await updateEstado(id, estado);
+      traerAsync();
+    } else {
+      console.log('Error al actualizar el usuario');
+    }
+  };
+
+
+
+  if (isLoading) {
     return (
       <div>
         <h1>Cargando...</h1>
@@ -85,8 +119,8 @@ export const UsersAdmin = () => {
             </thead>
             <tbody className="table__body">
               {resultsFound?.map((user) => (
-                <tr key={user.userGenID} className="row">
-                  <th>{user.userGenID}</th>
+                <tr key={user.id} className="row">
+                  <th className="lapsus">{user.email}</th>
                   <th>
                     <h4>{user.nombre}</h4>
                   </th>
@@ -96,7 +130,6 @@ export const UsersAdmin = () => {
                     <div>
                       {!deletting && (
                         <div className="buttons">
-                          <button className="edit">Editar</button>
                           <button
                             className="delete"
                             onClick={() => {
@@ -106,6 +139,11 @@ export const UsersAdmin = () => {
                           >
                             Eliminar
                           </button>
+                          {user.estado ? (
+                            <button onClick={() => handleBlockUser(user.id, false)}>Desbloquear</button>
+                          ) : (
+                            <button onClick={() => handleBlockUser(user.id, true)}>Bloquear</button>
+                          )}
                         </div>
                       )}
                       {idToDelete == user.id && (

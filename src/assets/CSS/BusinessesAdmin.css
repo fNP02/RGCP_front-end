@@ -63,7 +63,7 @@
             background-color: #ddd;
           }
           & tr {
-            text-transform: capitalize;
+            /* text-transform: capitalize; */
           }
           
         }

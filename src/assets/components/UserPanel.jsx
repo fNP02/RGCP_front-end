@@ -1,28 +1,28 @@
-import React, { useId } from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserHeader } from "./UserHeader";
-
 import { useUsers } from "../store/Users";
 import { updateUser } from "../../firebase/databaseUsers.js";
+import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/constants';
+
+/**
+ * UserPanel component.
+ * 
+ * @returns {JSX.Element} The rendered UserPanel component.
+ */
 
 export const UserPanel = () => {
   const { currentUser, currentDataUser, isLoading } = useUsers();
 
   const [completo, setCompleto] = useState(false);
-
-  // const [isLoading, setIsLoading] = useState(true);
-
   const [name, setName] = useState(currentDataUser.nombre || "");
   const [surname, setSurname] = useState(currentDataUser.apellido || "");
   const [email, setEmail] = useState(currentDataUser.email || "");
   const [age, setAge] = useState(currentDataUser.edad || "");
   const [dni, setDni] = useState(currentDataUser.dni || "");
   const [ambit, setAmbit] = useState(currentDataUser.ambito || "");
-  const [discipline, setDiscipline] = useState(
-    currentDataUser.disciplina || ""
-  );
+  const [discipline, setDiscipline] = useState(currentDataUser.disciplina || "");
   const [workedAs, setWorkedAs] = useState(currentDataUser.trabajo_de || "");
   const [biography, setBiography] = useState(currentDataUser.biografia || "");
 
@@ -55,9 +55,10 @@ export const UserPanel = () => {
       !!currentDataUser.trabajo_de,
       !!currentDataUser.biografia,
     ].reduce((acc, curr) => acc && curr, true);
-  
+
     return isValid ? 1 : 0;
   }
+
   const isCompleto = () => {
     return (
       age.trim() !== "" &&
@@ -74,17 +75,15 @@ export const UserPanel = () => {
     // Validación de campos
     if (!isCompleto()) {
       toast.error("Por favor complete todos los campos", {
-        position: "bottom-center", // Cambiamos la posición a la parte inferior central
-        autoClose: 3000, // Duración en milisegundos
+        position: "bottom-center",
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
       });
     } else {
-      // Los campos están completos, puedes realizar las acciones necesarias aquí
       setCompleto(true);
-      // updateUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia)
       updateUser(
         currentUser.uid,
         name,
@@ -99,34 +98,6 @@ export const UserPanel = () => {
       );
     }
   };
-
-  const disciplinaOptions = [
-    "Artes visuales",
-    "Danza",
-    "Teatro",
-    "Performance/Circo/otras escénicas",
-    "Música",
-    "Patrimonio",
-    "Diseño",
-    "Otro",
-  ];
-
-  const ambitoOptions = ["Público", "Privado", "Independiente", "Mixto"];
-
-  const trabajoOptions = [
-    "Gestión Cultural",
-    "Producción de eventos",
-    "Management/Representación",
-    "Artista/Dir. de Proyectos",
-    "Investigación",
-    "Otro",
-  ];
-
-  console.log(currentUser);
-  console.log(currentDataUser);
-console.log(isLoading);
-
-console.log(age);
 
   if (isLoading) {
     return (
@@ -195,6 +166,7 @@ console.log(age);
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
             <div className="field-group">
               <div className="input-container">
                 <label className="categoria" htmlFor="">
@@ -223,7 +195,6 @@ console.log(age);
             </div>
 
             <div className="input-container">
-              {console.log(ambit)}
               <label className="categoria" htmlFor="">
                 Ámbito{" "}
               </label>
@@ -255,7 +226,7 @@ console.log(age);
                 <option disabled value="">
                   Selecciona una disciplina
                 </option>
-                {disciplinaOptions.map((option, index) => (
+                {categoriesOptions.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
                   </option>
@@ -264,7 +235,6 @@ console.log(age);
             </div>
 
             <div className="input-container">
-              {console.log(workedAs)}
               <label className="categoria" htmlFor="">
                 Trabajó de{" "}
               </label>
@@ -309,5 +279,6 @@ console.log(age);
     </>
   );
 };
+
 
 export default UserPanel;

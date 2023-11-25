@@ -40,6 +40,9 @@ export const Login = () => {
       console.log(error.message);
       console.log(error.code);
       setErrorChange(error.code);
+      if (error.code === "auth/user-disabled") {
+        setErrorChange("Cuenta deshabilitada");
+      }
       // const errorDisp = firebaseErrors(error.code);
       // console.log(errorDisp);
       // setErrorChange(errorDisp);

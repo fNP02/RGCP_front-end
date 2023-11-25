@@ -64,13 +64,14 @@ export async function readPubli(id) {
  * @param {String} categorias 
  * @param {String} descripcion 
  */
-export async function updatePubli(id, institucionName, img, categorias, descripcion) {
-    await updateDoc(doc(db, "publicaciones", id), {
+export async function updatePubli(id, institucionName, img, categorias, descripcion, date) {
+    await updateDoc(doc(db, "publication", id), { 
         institucionName: institucionName,
         img: img,
         categorias: categorias,
         descripcion: descripcion,
-        timeData: serverTimestamp()
+        timeData: serverTimestamp(),
+        fechaDelEvento: date
     });
 }
 

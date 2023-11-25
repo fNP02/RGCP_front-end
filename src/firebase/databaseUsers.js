@@ -15,7 +15,7 @@ import { db } from "./config.js";
  * @param {String} trabajo_de 
  * @param {String} biografia 
  */
-export async function addUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia) {
+export async function addUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia, estado) {
     await setDoc(doc(db, "users", id), {
         nombre: nombre,
         apellido: apellido,
@@ -25,7 +25,8 @@ export async function addUser(id, nombre, apellido, email, edad, dni, ambito, di
         ambito: ambito,
         disciplina: disciplina,
         trabajo_de: trabajo_de,
-        biografia: biografia
+        biografia: biografia,
+        estado: estado
     });
 };
 
@@ -49,7 +50,9 @@ export async function readAllUser() {
             ambito: doc.data().ambito,
             disciplina: doc.data().disciplina,
             trabajo_de: doc.data().trabajo_de,
-            biografia: doc.data().biografia
+            biografia: doc.data().biografia,
+            estado: doc.data().estado,
+            rol: doc.data().rol
         });
     });
     return dataUsers;
@@ -85,7 +88,7 @@ export async function readUser(id) {
  * @param {String} trabajo_de 
  * @param {String} biografia 
  */
-export async function updateUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia) {
+export async function updateUser(id, nombre, apellido, email, edad, dni, ambito, disciplina, trabajo_de, biografia, estado) {
     await updateDoc(doc(db, "users", id), {
         nombre: nombre,
         apellido: apellido,
@@ -95,7 +98,8 @@ export async function updateUser(id, nombre, apellido, email, edad, dni, ambito,
         ambito: ambito,
         disciplina: disciplina,
         trabajo_de: trabajo_de,
-        biografia: biografia
+        biografia: biografia,
+        estado: estado
     });
     console.log('Usuario actualizado.');
 };
@@ -107,4 +111,10 @@ export async function updateUser(id, nombre, apellido, email, edad, dni, ambito,
 export async function deleteUser(id) {
     await deleteDoc(doc(db, "users", id));
     console.log('Usuario eliminado.');
+};
+
+export async function updateEstado(id, estado) {
+    await updateDoc(doc(db, "users", id), {
+        estado: estado
+    });
 };
