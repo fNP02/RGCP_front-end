@@ -18,11 +18,8 @@ export const UsersAdmin = () => {
   const { setTabTitle } = useTabs();
   const [resultsFound, setResultsFound] = useState(null);
   const [idToDelete, setIdToDelete] = useState(null);
-
   const [deletting, setDeletting] = useState(false);
-
   const [isLoading, setIsLoading] = useState(true)
-
 
   useEffect(() => {
     const traerAsync = async () => {
@@ -60,7 +57,7 @@ export const UsersAdmin = () => {
   };
 
 
-  if(isLoading){
+  if (isLoading) {
     return (
       <div>
         <h1>Cargando...</h1>

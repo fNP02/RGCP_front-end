@@ -17,26 +17,10 @@ export const CreateOp = () => {
   const [date, setDate] = useState("");
   const [image, setImage] = useState(null);
 
-  const handleAddCat = (e) => {
-    e.preventDefault();
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    setCategories([...categories, { name: newCat, color }]);
-    setNewCat("");
-  };
-
-  const handleUploadImage = async (e) => {
-    const file = e.target.files[0];
-    console.log(file);
-    const imgFile = await uploadFilePost(file);
-    console.log(imgFile);
-    setImage(imgFile);
-  };
-
   useEffect(() => {
-    if(editing){
-      console.log(editing);
+    if (editing) {
       setName(editing.institucionName)
-      if(editing.categorias) {
+      if (editing.categorias) {
         setCategories(editing.categorias.map((cat, index) => {
           const color = colors[index % colors.length];
           return { name: cat, color };
@@ -46,12 +30,24 @@ export const CreateOp = () => {
       setDate(editing.fechaDelEvento)
       setImage(editing.img)
     }
-  }, [])
+  }, [editing])
+
+  const handleAddCat = (e) => {
+    e.preventDefault();
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    setCategories([...categories, { name: newCat, color }]);
+    setNewCat("");
+  };
+
+  const handleUploadImage = async (e) => {
+    const file = e.target.files[0];
+    const imgFile = await uploadFilePost(file);
+    setImage(imgFile);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const cats = categories.map((cat) => cat.name);
-
 
     if (editing) {
       await updatePubli(editing.id, name, image, cats, description, date);
@@ -62,11 +58,10 @@ export const CreateOp = () => {
     navigate("/businesses-admin");
   };
 
-
   return (
     <div className="container-form">
       <h1>{editing ? 'Editar Oportunidad' : 'Nueva Oportunidad'}</h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label htmlFor="">Entidad o Persona que realiza el evento</label>
           <input

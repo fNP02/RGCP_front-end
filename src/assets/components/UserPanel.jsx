@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserHeader } from "./UserHeader";
-
 import { useUsers } from "../store/Users";
 import { updateUser } from "../../firebase/databaseUsers.js";
 import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/constants';
@@ -12,9 +11,6 @@ export const UserPanel = () => {
   const { currentUser, currentDataUser, isLoading } = useUsers();
 
   const [completo, setCompleto] = useState(false);
-
-  // const [isLoading, setIsLoading] = useState(true);
-
   const [name, setName] = useState(currentDataUser.nombre || "");
   const [surname, setSurname] = useState(currentDataUser.apellido || "");
   const [email, setEmail] = useState(currentDataUser.email || "");
@@ -56,7 +52,7 @@ export const UserPanel = () => {
       !!currentDataUser.trabajo_de,
       !!currentDataUser.biografia,
     ].reduce((acc, curr) => acc && curr, true);
-  
+
     return isValid ? 1 : 0;
   }
   const isCompleto = () => {
@@ -104,9 +100,9 @@ export const UserPanel = () => {
 
   console.log(currentUser);
   console.log(currentDataUser);
-console.log(isLoading);
+  console.log(isLoading);
 
-console.log(age);
+  console.log(age);
 
   if (isLoading) {
     return (
@@ -175,6 +171,7 @@ console.log(age);
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
+
             <div className="field-group">
               <div className="input-container">
                 <label className="categoria" htmlFor="">

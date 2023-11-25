@@ -2,8 +2,6 @@ import React from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useTabs } from "../store/Tabs";
 
-// import "../CSS/UsersPanel.css";
-
 export const AdminHeader = () => {
   const { tabActive, setTabActive } = useTabs();
   const navigate = useNavigate();

@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useOps } from "../store/Ops"; // Asegúrate de que este hook exista y funcione correctamente
+import { useOps } from "../store/Ops";
 import { UserHeader } from "./UserHeader";
 import { SearchComponent } from "./SearchComponent";
 import { colors } from '../store/constants';
 import Modal from 'react-modal';
 
 export const UserPage = () => {
-
     const [ops, setOps] = useState([]);
     const navigate = useNavigate();
-    const [shouldRedirect, setShouldRedirect] = useState(false);
     const { getAllOps, allOps } = useOps();
     const [resultsFound, setResultsFound] = useState(null);
-
-
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
     const [zoom, setZoom] = useState(1);
+
+    useEffect(() => {
+        const fetchOps = async () => {
+            const opsData = await getAllOps();
+            setOps(opsData);
+        };
+
+        fetchOps();
+    }, []);
 
     const openModal = (imageUrl) => {
         setSelectedImage(imageUrl);
@@ -30,19 +35,7 @@ export const UserPage = () => {
 
     const handleClick = () => {
         setZoom(prevZoom => prevZoom === 1 ? 2 : 1);
-      };
-
-    useEffect(() => {
-        // Reemplaza getOps con la función que uses para obtener las ops
-        const fetchOps = async () => {
-            const opsData = await getAllOps();
-            setOps(opsData);
-        };
-
-        fetchOps();
-    }, []);
-
-
+    };
 
     return (
         <div className="div-molesto">
@@ -55,13 +48,13 @@ export const UserPage = () => {
                         <h5 className="categorias">
                             {op.categorias.map((categoria, index) => (
                                 <span
-                                key={index}
-                                className="category"
-                                style={{
-                                    backgroundColor: colors[index % colors.length],
-                                }}
+                                    key={index}
+                                    className="category"
+                                    style={{
+                                        backgroundColor: colors[index % colors.length],
+                                    }}
                                 >
-                                {categoria}
+                                    {categoria}
                                 </span>
                             ))}
                         </h5>
@@ -91,8 +84,8 @@ export const UserPage = () => {
                             justifyContent: 'center',
                         },
                         content: {
-                            width: '90%',
-                            height: 'auto',
+                            width: '80%',
+                            maxHeight: '90vh',
                             position: 'absolute',
                             left: '50%',
                             top: '50%',
@@ -100,7 +93,8 @@ export const UserPage = () => {
                         },
                     }}
                 >
-                   <img
+                    <button onClick={closeModal} className="button-close">x</button>
+                    <img
                         className="modal-image"
                         src={selectedImage}
                         alt="Imagen seleccionada"
