@@ -7,7 +7,6 @@ import { UsersAdmin } from "./assets/components/UsersAdmin";
 import { BusinessesAdmin } from "./assets/components/BusinessesAdmin";
 import { ProtectedRoute } from "./assets/components/ProtectedRoute";
 import { UserPage } from "./assets/components/UserPage";
-import { EditOp } from "./assets/components/EditOp";
 
 import "./App.css";
 import { CreateOp } from "./assets/components/CreateOp";
@@ -88,7 +87,6 @@ export const App = () => {
           <Route path="/users-admin" element={<UsersAdmin />} />
           <Route path="/businesses-admin" element={<BusinessesAdmin />} />
           <Route path="/op-create" element={<CreateOp />} />
-          <Route path="/op-edit" element={<EditOp />} />
           <Route path="/user-create" element={<CreateUser />} />
           <Route path="/user-page" element={<UserPage />} />
         </Route>

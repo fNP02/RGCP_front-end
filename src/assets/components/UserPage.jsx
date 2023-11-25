@@ -70,6 +70,7 @@ export const UserPage = () => {
                         />
                         <br />
                         <p className="descripcion">{op.descripcion}</p>
+                        <br />
                         <p className="fecha"> {op.fechaDelEvento} </p>
                     </div>
                 ))}
