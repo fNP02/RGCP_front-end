@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useOps } from "../store/Ops";
 import { UserHeader } from "./UserHeader";
 import { SearchComponent } from "./SearchComponent";
-import { colors } from '../store/Constants';
+import { colors } from "../store/Constants";
 import Modal from 'react-modal';
 
 export const UserPage = () => {
