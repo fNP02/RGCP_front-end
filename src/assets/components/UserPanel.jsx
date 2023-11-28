@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserHeader } from "./UserHeader";
 import { useUsers } from "../store/Users";
 import { updateUser } from "../../firebase/databaseUsers.js";
-import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/constants';
+import { categoriesOptions, ambitoOptions, trabajoOptions } from '../store/Constants';
 
 /**
  * UserPanel component.
