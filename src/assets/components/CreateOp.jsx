@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { addPubli, updatePubli } from "../../firebase/databasePublication.js";
 import { uploadFilePost } from "../../firebase/imgDB.js";
 import { useOps } from "../store/Ops.js";
-import { categoriesOptions, colors } from '../store/constants';
+import { categoriesOptions, colors } from '../store/Constants';
 
 export const CreateOp = () => {
   const navigate = useNavigate();

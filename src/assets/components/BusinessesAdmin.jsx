@@ -9,7 +9,7 @@ import { SearchComponent } from "./SearchComponent";
 import { useOps } from "../store/Ops";
 
 import { deletePubli } from "../../firebase/databasePublication.js";
-import { categoriesOptions } from '../store/constants';
+import { categoriesOptions } from '../store/Constants';
 
 export const BusinessesAdmin = () => {
   const navigate = useNavigate();
