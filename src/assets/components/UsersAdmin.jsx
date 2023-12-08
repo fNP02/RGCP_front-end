@@ -104,7 +104,7 @@ export const UsersAdmin = () => {
     <div className="usersAdmin-body">
       <AdminHeader />
       <h1>Administrador de Usuarios</h1>
-      <button onClick={() => getAllUserss()}>Traer users</button>
+      {/* <button onClick={() => getAllUserss()}>Traer users</button> */}
       <SearchComponent array={allUsers} setResExt={setResultsFound} />
       <button onClick={() => navigate("/user-create")}> Crear Nuevo</button>
       <div>

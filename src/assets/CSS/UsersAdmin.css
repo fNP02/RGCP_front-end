@@ -172,7 +172,7 @@
 }
 
 .login {
-  margin: 10px;
+  margin: 20px auto;
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -227,8 +227,7 @@
 }
 
 .image {
-  width: 90%;
-  height: auto;
+  height: 200px;
   padding: 20px;
 }
 

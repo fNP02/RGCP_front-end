@@ -57,7 +57,7 @@ export const App = () => {
   console.log(currentUser);
   return (
     <BrowserRouter basename="/">
-      <Navigation />
+      {/* <Navigation /> */}
 
       <Routes>
         <Route index element={<Login />} />
@@ -78,7 +78,7 @@ export const App = () => {
         <Route
           element={
             <ProtectedRoute
-              isAllowed={!!currentUser && currentDataUser.rol == "Admin"}
+              isAllowed={!!currentUser && currentDataUser?.rol == "Admin"}
               // isAllowed={!!currentUser && user.permissions.includes("admin")}
               redirectTo="/user-panel"
             />
